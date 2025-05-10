@@ -1,13 +1,24 @@
 <section id="login" class="content">
-    <h2>Login</h2>
-    <form style="max-width: 400px; margin: auto; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-      <label for="email" style="font-weight: 600;">Email:</label><br>
-      <input type="email" id="email" name="email" required style="width: 100%; padding: 10px; margin-top: 5px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 5px;"><br>
-  
-      <label for="password" style="font-weight: 600;">Password:</label><br>
-      <input type="password" id="password" name="password" required style="width: 100%; padding: 10px; margin-top: 5px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 5px;"><br>
-  
-      <button type="submit" style="width: 100%; padding: 10px; background-color: #2e7d32; color: white; border: none; border-radius: 5px; font-weight: 600; cursor: pointer;">Login</button>
-    </form>
-  </section>
-  
+  <h2>Login</h2>
+
+  <form style="max-width: 400px; margin: auto; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+    <label for="email" style="font-weight: 600;">Email:</label><br>
+    <input type="email" id="email" name="email" required style="width: 100%; padding: 10px; margin-top: 5px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 5px;"><br>
+
+    <label for="password" style="font-weight: 600;">Password:</label><br>
+    <input type="password" id="password" name="password" required style="width: 100%; padding: 10px; margin-top: 5px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 5px;"><br>
+
+    <!-- Replaced single login button with three role-based login buttons -->
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <button type="submit" name="role" value="farmer" style="width: 100%; padding: 10px; background-color: #2e7d32; color: white; border: none; border-radius: 5px; font-weight: 600; cursor: pointer;">
+        Login as Farmer
+      </button>
+      <button type="submit" name="role" value="vendor" style="width: 100%; padding: 10px; background-color: #f57c00; color: white; border: none; border-radius: 5px; font-weight: 600; cursor: pointer;">
+        Login as Vendor
+      </button>
+      <button type="submit" name="role" value="transporter" style="width: 100%; padding: 10px; background-color: #1976d2; color: white; border: none; border-radius: 5px; font-weight: 600; cursor: pointer;">
+        Login as Transporter
+      </button>
+    </div>
+  </form>
+</section>
