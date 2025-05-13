@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Smart Crop Management",
+    "image": "https://cdn-images-1.medium.com/v2/resize:fit:800/0*2znjHhSFCkaF1AmY",
+    "description": "AI-based crop recommendation and yield prediction.",
+    "link": "SMART-CROP-MANAGEMENT.html"
+  },
+  {
+    "title": "Produce Processing",
+    "image": "https://www.onsetcomp.com/sites/default/files/styles/hero_banner/public/2022-09/high-level-explainer_5.jpg?itok=3H2ZV7BA",
+    "description": "Post-harvest handling, grading, storage management, and packaging.",
+    "link": "PRODUCE PROCESSING.html"
+  },
+  {
+    "title": "Logistics & Transport",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRq-e2RflZGcIS65rEAEVjETGgI3MWK8I7i3Q&s",
+    "description": "Route optimization, vehicle tracking, delay/spoilage alerts, and buyer linkage.",
+    "link": "Logistics & Transport.html"
+  },
+  {
+    "title": "Farmer Dashboard",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQs5IIqrc2S0-Y3-9LJBUUPtFM5Nh4uD_V6KQ&s",
+    "description": "Accessible insights, alerts, and decision-support tools in local languages.",
+    "link": "fARMER'S DASHBOARD.html"
+  },
+  {
+    "title": "Storage Guidelines",
+    "image": "shutterstock_1502024066-scaled.jpg",
+    "description": "Practical tips and best practices for preserving produce quality after harvest.",
+    "link": "storageguidelines.html"
+  },
+  {
+    "title": "Frequently Asked Questions",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQs5IIqrc2S0-Y3-9LJBUUPtFM5Nh4uD_V6KQ&s",
+    "description": "Answers to common questions on produce storage, transportation, and best practices to reduce spoilage.",
+    "link": "faq.html"
+  }
+]

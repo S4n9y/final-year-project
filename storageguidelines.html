@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Farmer's Storage Guidelines</title>
+  <link rel="stylesheet" href="PRODUCE PROCESSING.css"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+  <nav>
+    <a href="#" class="logo">FarmHub</a>
+    <ul>
+      <li><a href="homepage.html">Home</a></li>
+      <li><a href="#">Projects</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <h1>Farmer's Storage Guidelines</h1>
+    <p>Preserve freshness. Reduce waste. Maximize your harvest's value. 🧺🌽</p>
+  </header>
+
+  <main class="content">
+    <img src="shutterstock_1502024066-scaled.jpg" class="feature-image" alt="Storage Facility">
+
+    <!-- Introduction -->
+    <section>
+      <h2>Why Proper Storage Matters</h2>
+      <p>
+        Improper storage can lead to up to 40% post-harvest losses — especially in fruits, vegetables, and grains. With the right storage techniques, farmers can significantly extend shelf life, reduce losses, and earn more for their crops.
+      </p>
+      <p>
+        Storage isn’t just about putting produce in a shed. It's a science of controlling the environment — temperature, humidity, airflow, light — to slow spoilage and maintain nutritional quality.
+      </p>
+    </section>
+
+    <!-- Key Guidelines -->
+    <section class="mt-5">
+      <h2>Key Storage Guidelines</h2>
+      <ul>
+        <li><strong>Harvest Timing:</strong> Always harvest during the cooler part of the day (morning or evening) to reduce field heat.</li>
+        <li><strong>Pre-Cooling:</strong> Rapidly cool fruits and vegetables after harvest using shade, cold water, or ventilated cool rooms to maintain freshness.</li>
+        <li><strong>Clean & Dry:</strong> Remove dirt and excess moisture. Wet produce encourages mold, while dust attracts pests.</li>
+        <li><strong>Grading:</strong> Sort by size and ripeness. Keep overripe or damaged produce separate — one bad apple really can spoil the bunch!</li>
+        <li><strong>Stacking:</strong> Don’t over-stack. Leave gaps for air circulation between bags, boxes, or bins.</li>
+        <li><strong>Routine Checks:</strong> Inspect every few days to spot spoilage early and remove affected produce quickly.</li>
+      </ul>
+    </section>
+
+    <!-- Storage Types -->
+    <section class="mt-5">
+      <h2>Storage Options for Different Produce Types</h2>
+      <p>Every crop is unique. Here's how to store some common types:</p>
+
+      <ul>
+        <li><strong>Grains (Wheat, Rice, Maize):</strong>
+          <ul>
+            <li>Ideal Temp: 15–25°C</li>
+            <li>Humidity: Below 60%</li>
+            <li>Tips: Use airtight metal bins or sacks with neem leaves. Always elevate above ground to avoid moisture seepage.</li>
+          </ul>
+        </li>
+
+        <li><strong>Leafy Greens (Spinach, Coriander):</strong>
+          <ul>
+            <li>Ideal Temp: 0–4°C</li>
+            <li>Humidity: 95–98%</li>
+            <li>Tips: Use moist cloth wraps or perforated plastic crates. Store in shaded, cool areas if refrigeration isn’t available.</li>
+          </ul>
+        </li>
+
+        <li><strong>Fruits (Mango, Banana, Apple):</strong>
+          <ul>
+            <li>Bananas: Keep away from apples (ethylene causes over-ripening)</li>
+            <li>Apples: Store in Controlled Atmosphere rooms, if available</li>
+            <li>Mangoes: Store at 13–15°C to avoid chilling injury</li>
+          </ul>
+        </li>
+
+        <li><strong>Roots & Tubers (Potatoes, Onions):</strong>
+          <ul>
+            <li>Potatoes: Store at 4–10°C in the dark to prevent sprouting</li>
+            <li>Onions: Dry thoroughly, then store in net bags with airflow</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Traditional & Modern Storage Solutions -->
+    <section class="mt-5">
+      <h2>Traditional & Modern Storage Techniques</h2>
+      <ul>
+        <li><strong>Zero Energy Cool Chambers:</strong> Made from bricks and sand; keeps produce cool without electricity. Ideal for rural farms.</li>
+        <li><strong>Metal Silos:</strong> Airtight, pest-proof, and easy to clean. Used for long-term grain storage.</li>
+        <li><strong>Cold Rooms:</strong> Use for perishables. Recommended for cooperative groups or government-backed farm clusters.</li>
+        <li><strong>Smart Sensors:</strong> IoT devices that monitor humidity and temperature can alert farmers via mobile apps to prevent spoilage.</li>
+      </ul>
+    </section>
+
+    <!-- Bonus Tips -->
+    <section class="mt-5">
+      <h2>Bonus Tips 💡</h2>
+      <ul>
+        <li><strong>Use Pallets:</strong> Never store directly on the floor. Pallets improve airflow and reduce contact with moisture.</li>
+        <li><strong>Natural Pest Control:</strong> Use dried neem or tulsi leaves in grain sacks. Burn camphor once a month inside storage to repel insects.</li>
+        <li><strong>Use Lighting Wisely:</strong> Keep storage areas dim. Light speeds up ripening in some fruits and increases temperature.</li>
+        <li><strong>Backup Plan:</strong> Always have an alternative spot in case of extreme weather or contamination.</li>
+      </ul>
+      <a href="farmerbook.pdf" class="btn btn-success mt-3">Download Full Farmer's Guide (PDF)</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 FarmHub | Empowering Farmers Everywhere 🌾</p>
+  </footer>
+
+  <button id="scrollTopBtn" title="Go to top">↑</button>
+
+  <script>
+    const scrollBtn = document.getElementById("scrollTopBtn");
+    window.onscroll = function() {
+      scrollBtn.style.display = (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) ? "block" : "none";
+    };
+    scrollBtn.onclick = function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+  </script>
+</body>
+</html>
