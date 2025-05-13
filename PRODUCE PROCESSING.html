@@ -6,7 +6,6 @@
   <title>Produce Processing</title>
   <link href="PRODUCE PROCESSING.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
 </head>
 <body>
   <nav>
@@ -25,24 +24,124 @@
 
   <main class="content">
     <img src="https://source.unsplash.com/1200x400/?harvest,storage" class="feature-image" alt="Produce Processing">
-    <h2 class="mt-4">Overview</h2>
-    <p>
-      Efficient produce processing is essential to minimize post-harvest losses and ensure the delivery of high-quality agricultural products to the market. This solution incorporates digital tracking, automation, and data-driven decision making to manage every stage of the post-harvest lifecycle including:
-    </p>
-    <ul>
-      <li>Grading of produce based on weight, size, and quality</li>
-      <li>Storage management with temperature and humidity monitoring</li>
-      <li>Packaging optimization to reduce damage during transit</li>
-      <li>Inventory and logistics tracking</li>
-    </ul>
-    <p>
-      Through smart tools and real-time insights, farmers and cooperatives can reduce wastage, increase profitability, and maintain food quality standards across the supply chain.
-    </p>
-    <a href="#" class="btn btn-success mt-3">Explore More</a>
+
+    <!-- Overview Section -->
+    <section>
+      <h2>Overview</h2>
+      <p>
+        Post-harvest processing is crucial for maintaining the quality, safety, and marketability of agricultural products. Effective handling ensures that fruits, vegetables, grains, and other produce are preserved properly, reducing waste and maximizing value.
+      </p>
+      <p>
+        Our solutions integrate modern technology with traditional practices to optimize every stage of the post-harvest process, from sorting and grading to safe packaging and storage. This includes:
+      </p>
+      <ul>
+        <li>Automated grading systems that sort produce based on size, quality, and weight</li>
+        <li>Real-time temperature and humidity monitoring for storage optimization</li>
+        <li>Packaging designed to prevent damage and preserve freshness during transport</li>
+        <li>Inventory management systems that streamline logistics</li>
+      </ul>
+      <p>
+        By leveraging technology, farmers and cooperatives can significantly reduce spoilage, minimize waste, and improve their profit margins while meeting quality standards.
+      </p>
+      <a href="#" class="btn btn-success mt-3">Explore More</a>
+    </section>
+
+    <!-- Grading Section -->
+    <section class="mt-5">
+      <h2>Grading</h2>
+      <p>
+        Grading is the first step in ensuring that produce meets quality standards. It involves sorting products into different categories based on size, ripeness, and appearance. Grading not only ensures uniformity for the consumer but also helps farmers get the best price for their produce by targeting specific market segments.
+      </p>
+      <p>
+        There are two primary methods of grading:
+      </p>
+      <ul>
+        <li><strong>Manual Grading:</strong> Labor-intensive but offers the ability to inspect each piece of produce for defects or imperfections. This is common for delicate or high-value crops like apples or grapes.</li>
+        <li><strong>Automated Grading:</strong> Uses machines equipped with sensors, cameras, and weight detectors to sort produce based on preset parameters. This method is faster and can be more accurate for bulk processing like potatoes or tomatoes.</li>
+      </ul>
+      <p>
+        Factors considered during grading include:
+      </p>
+      <ul>
+        <li><strong>Size:</strong> Produce is sorted into different categories based on its dimensions.</li>
+        <li><strong>Weight:</strong> Heavier items may be graded differently to ensure consistency in packaging.</li>
+        <li><strong>Color and Ripeness:</strong> These are indicators of freshness and nutritional content.</li>
+        <li><strong>Defects:</strong> Any blemishes, bruises, or cuts are taken into account to ensure quality control.</li>
+      </ul>
+    </section>
+
+    <!-- Storage Management Section -->
+    <section class="mt-5">
+      <h2>Storage Management</h2>
+      <p>
+        Proper storage is key to preventing spoilage and extending the shelf life of harvested produce. Effective storage management uses technology to create an ideal environment for different types of produce, considering factors such as temperature, humidity, and airflow.
+      </p>
+      <p>
+        There are several types of storage systems used depending on the type of product:
+      </p>
+      <ul>
+        <li><strong>Cold Storage:</strong> Essential for perishable items like fruits, vegetables, and dairy. Refrigerated warehouses use low temperatures to slow down the ripening process, preventing decay and extending shelf life.</li>
+        <li><strong>Controlled Atmosphere (CA) Storage:</strong> Regulates the oxygen, carbon dioxide, and humidity levels within storage facilities. This method is used for fruits like apples and citrus, preserving their quality for months.</li>
+        <li><strong>Dry Storage:</strong> For non-perishable items such as grains, beans, and root vegetables. These spaces are typically ventilated to prevent the buildup of moisture and mold.</li>
+      </ul>
+      <p>
+        Advanced storage systems also come with smart sensors and IoT devices that track temperature and humidity levels in real time, ensuring that products are always stored under the optimal conditions.
+      </p>
+    </section>
+
+    <!-- Packaging Section -->
+    <section class="mt-5">
+      <h2>Packaging</h2>
+      <p>
+        Packaging not only protects produce during transport but also serves as a marketing tool. The right packaging preserves the freshness and quality of produce while minimizing damage during handling and delivery.
+      </p>
+      <p>
+        Packaging innovations have made it possible to reduce waste and improve the shelf life of agricultural products. Here are some key packaging methods:
+      </p>
+      <ul>
+        <li><strong>Biodegradable Packaging:</strong> A sustainable option that reduces the environmental impact of packaging waste. Materials like biodegradable plastics, paper, and plant-based films are used to wrap fruits and vegetables.</li>
+        <li><strong>Vacuum Sealing:</strong> This method removes air from the packaging, slowing down the oxidation process and keeping produce fresh for longer. It is ideal for delicate products like leafy greens or herbs.</li>
+        <li><strong>Modified Atmosphere Packaging (MAP):</strong> Packaging that uses controlled levels of gases (like nitrogen) to slow the ripening process of fruits like bananas or avocados.</li>
+        <li><strong>Customizable Cartons and Crates:</strong> Custom-sized packaging tailored to the specific needs of the produce, helping to minimize movement and prevent bruising during transportation.</li>
+      </ul>
+      <p>
+        Proper labeling is also a key aspect of packaging. It includes information such as the date of harvest, origin, and any certifications (e.g., organic or fair trade). This helps increase consumer trust and streamline logistics.
+      </p>
+    </section>
+
   </main>
 
   <footer>
     <p>&copy; 2025 FarmHub | Supporting India's Agricultural Innovation</p>
   </footer>
+  <!-- Scroll to Top Button -->
+<button id="scrollTopBtn" title="Go to top">↑</button>
+
+<!-- JavaScript -->
+<script>
+  // Scroll to Top Button
+  const scrollBtn = document.getElementById("scrollTopBtn");
+  window.onscroll = function() {
+    scrollBtn.style.display = (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) ? "block" : "none";
+  };
+  scrollBtn.onclick = function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Explore More Button Click
+  document.querySelector('.btn-success').addEventListener('click', function(e) {
+    e.preventDefault();
+    alert("More features coming soon! Stay tuned 🌾");
+  });
+
+  // FAQ Toggle (Optional if you add FAQ tips)
+  document.querySelectorAll('.faq-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const content = btn.nextElementSibling;
+      content.style.display = (content.style.display === "block") ? "none" : "block";
+    });
+  });
+</script>
+
 </body>
 </html>
