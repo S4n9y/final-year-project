@@ -1,0 +1,18 @@
+body {
+  background-color: #f8fff5;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+table {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+thead th {
+  background-color: #198754 !important;
+  color: white;
+}
+
+h1 {
+  font-weight: 600;
+}

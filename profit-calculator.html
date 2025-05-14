@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FarmHub - Profit Calculator</title>
+  <link rel="stylesheet" href="Profit-calculator.css"> <!-- Reuse existing style -->
+
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <a href="#" class="logo">FarmHub</a>
+    <ul>
+      <li><a href="homepage.html">Home</a></li>
+      <li><a href="information-extraction.html">Info Extraction</a></li>
+      <li><a href="profit-calculator.html">Profit Calculator</a></li>
+      <li><a href="contactus.html">ContactUs</a></li>
+      <li><a href="About-us.html">About-us</a></li>
+      <li><a href="login.html">Login</a></li>
+      <li><a href="FAQ.html">FAQs</a></li>
+
+    </ul>
+  </nav>
+
+  <!-- Profit Calculator -->
+  <div class="calculator">
+    <h2>Crop Profit Calculator</h2>
+
+    <label for="revenue">Total Revenue (₹)</label>
+    <input type="number" id="revenue" placeholder="e.g. 50000" />
+
+    <label for="cost">Total Cost (₹)</label>
+    <input type="number" id="cost" placeholder="e.g. 30000" />
+
+    <button onclick="calculateProfit()">Calculate Profit</button>
+
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    function calculateProfit() {
+      const revenue = parseFloat(document.getElementById('revenue').value);
+      const cost = parseFloat(document.getElementById('cost').value);
+      const resultDiv = document.getElementById('result');
+
+      if (isNaN(revenue) || isNaN(cost)) {
+        resultDiv.textContent = "Please enter valid numbers.";
+        return;
+      }
+
+      const profit = revenue - cost;
+      resultDiv.textContent = `Estimated Profit: ₹${profit}`;
+    }
+  </script>
+
+</body>
+</html>
