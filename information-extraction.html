@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FarmHub - Information Extraction</title>
+  <link rel="stylesheet" href="information-extraction.css"> <!-- Reusing same CSS file for consistent design -->
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <a href="#" class="logo">FarmHub</a>
+    <ul>
+      <li><a href="homepage.html">Home</a></li>
+      <li><a href="information-extraction.html">Info Extraction</a></li>
+      <li><a href="contactus.html">ContactUs</a></li>
+      <li><a href="About-us.html">About-us</a></li>
+      <li><a href="login.html">Login</a></li>
+    </ul>
+  </nav>
+
+  <!-- Info Extraction Section -->
+  <section id="faq">
+    <h2>Information Extraction in Agriculture</h2>
+
+    <div class="faq-item active">
+      <div class="faq-answer">
+        <p>Information extraction is the process of automatically retrieving valuable insights from agricultural data sources—like weather forecasts, soil reports, or market prices—using AI and machine learning models.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-toggle">What kind of data can be extracted?</button>
+      <div class="faq-answer">
+        <p>Crop conditions, yield predictions, pest alerts, irrigation needs, market trends, and government schemes can all be extracted from structured or unstructured data sources.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-toggle">How does it benefit farmers?</button>
+      <div class="faq-answer">
+        <p>It enables smart decisions on sowing, harvesting, pricing, and resource allocation—maximizing profits and minimizing risks.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-toggle">Where is the data extracted from?</button>
+      <div class="faq-answer">
+        <p>Data is extracted from satellite images, IoT sensors in farms, weather APIs, government reports, and agri-research articles.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-toggle">Can small farmers benefit too?</button>
+      <div class="faq-answer">
+        <p>Yes! Mobile apps and AI-based platforms are being built to deliver extracted insights directly to farmers—even in regional languages.</p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // FAQ toggle behavior
+    document.querySelectorAll('.faq-toggle').forEach(button => {
+      button.addEventListener('click', () => {
+        const faqItem = button.closest('.faq-item');
+        faqItem.classList.toggle('active');
+      });
+    });
+  </script>
+
+</body>
+</html>

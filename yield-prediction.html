@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FarmHub - Yield Prediction</title>
+  <link rel="stylesheet" href="YEILDPREDICTION.CSS"> <!-- Reusing existing style -->
+  
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <a href="#" class="logo">FarmHub</a>
+    <ul>
+      <li><a href="homepage.html">Home</a></li>
+      <li><a href="information-extraction.html">Info Extraction</a></li>
+      <li><a href="profit-calculator.html">Profit Calculator</a></li>
+      <li><a href="yield-prediction.html">Yield Prediction</a></li>
+      <li><a href="contactus.html">ContactUs</a></li>
+      <li><a href="About-us.html">About-us</a></li>
+      <li><a href="login.html">Login</a></li>
+      <li><a href="FAQ.html">FAQs</a></li>
+    </ul>
+  </nav>
+
+  <!-- Yield Predictor -->
+  <div class="predictor">
+    <h2>Crop Yield Prediction</h2>
+
+    <label for="crop">Select Crop</label>
+    <select id="crop">
+      <option value="wheat">Wheat</option>
+      <option value="rice">Rice</option>
+      <option value="maize">Maize</option>
+      <option value="soybean">Soybean</option>
+      <option value="cotton">Cotton</option>
+    </select>
+
+    <label for="area">Farming Area (in hectares)</label>
+    <input type="number" id="area" placeholder="e.g. 2.5" />
+
+    <label for="region">Region / State</label>
+    <input type="text" id="region" placeholder="e.g. Maharashtra" />
+
+    <button onclick="predictYield()">Predict Yield</button>
+
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    function predictYield() {
+      const crop = document.getElementById('crop').value;
+      const area = parseFloat(document.getElementById('area').value);
+      const region = document.getElementById('region').value;
+      const resultDiv = document.getElementById('result');
+
+      if (!area || !region) {
+        resultDiv.textContent = "Please fill all fields correctly.";
+        return;
+      }
+
+      // Placeholder logic (you can replace this with real model integration)
+      const baseYieldPerHectare = {
+        wheat: 3.2,
+        rice: 4.5,
+        maize: 2.8,
+        soybean: 2.1,
+        cotton: 1.5
+      };
+
+      const predictedYield = (baseYieldPerHectare[crop] * area).toFixed(2);
+
+      resultDiv.textContent = `Estimated Yield for ${crop.charAt(0).toUpperCase() + crop.slice(1)}: ${predictedYield} tonnes`;
+    }
+  </script>
+
+</body>
+</html>

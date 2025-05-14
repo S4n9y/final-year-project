@@ -1,0 +1,13 @@
+body {
+  background-color: #f6fff6;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+table {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+th {
+  font-weight: bold;
+}

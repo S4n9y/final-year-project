@@ -1,0 +1,9 @@
+body {
+  background-color: #f9fff9;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.card-title {
+  color: #28a745;
+  font-weight: bold;
+}
