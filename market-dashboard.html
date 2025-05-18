@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -51,6 +51,35 @@
   <footer class="text-center bg-success text-white py-3">
     &copy; 2025 FarmHub | Empowering Farmers with Data 📊
   </footer>
+
+  <script>
+    const marketPrices = [
+      { crop: "Wheat", market: "Nagpur", min: 20, max: 26, modal: 23 },
+      { crop: "Tomato", market: "Pune", min: 12, max: 18, modal: 15 },
+      { crop: "Onion", market: "Nashik", min: 10, max: 15, modal: 13 },
+      { crop: "Chilli", market: "Hyderabad", min: 30, max: 42, modal: 36 },
+      { crop: "Rice", market: "Raipur", min: 25, max: 35, modal: 30 },
+      { crop: "Potato", market: "Kanpur", min: 8, max: 12, modal: 10 }
+    ];
+
+    function fetchPrices() {
+      const tableBody = document.getElementById("market-data");
+      tableBody.innerHTML = "";
+      marketPrices.forEach(item => {
+        tableBody.innerHTML += `
+          <tr>
+            <td>${item.crop}</td>
+            <td>${item.market}</td>
+            <td>₹${item.min}</td>
+            <td>₹${item.max}</td>
+            <td>₹${item.modal}</td>
+          </tr>`;
+      });
+    }
+
+    // Load default data on page load
+    window.onload = fetchPrices;
+  </script>
 
 </body>
 </html>
