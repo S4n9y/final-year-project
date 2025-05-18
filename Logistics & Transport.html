@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -6,7 +6,6 @@
   <title>Logistics & Transport</title>
   <link href="LOGISTIC'S AND TRANSPOART.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
 </head>
 <body>
   <nav>
@@ -14,7 +13,7 @@
     <ul>
       <li><a href="homepage.html">Home</a></li>
       <li><a href="#">Dashboard</a></li>
-      <li><a href="#">Contact</a></li>
+      <li><a href="contactus.html">Contact-us</a></li>
     </ul>
   </nav>
 
@@ -23,8 +22,9 @@
     <p>Smart systems to streamline movement from farm to market</p>
   </header>
 
-  <main class="content">
-    <img src="Tran.1.jpg" class="feature-image" alt="Logistics">
+  <main class="content container mt-4">
+    <img src="Tran.1.jpg" class="feature-image img-fluid" alt="Logistics">
+    
     <h2 class="mt-4">Overview</h2>
     <p>
       Logistics and transport are vital for minimizing post-harvest losses and ensuring that agricultural produce reaches markets efficiently and in good condition. Our smart logistics solution integrates GPS tracking, route optimization, and real-time inventory management to empower farmers and supply chain operators.
@@ -39,10 +39,77 @@
       By leveraging technology, this solution reduces transit delays, ensures produce quality, and enhances farmer access to broader markets.
     </p>
     <a href="#" class="btn btn-dark mt-3">Learn More</a>
+
+    <!-- Live Location Sharing -->
+    <section class="my-5">
+      <h3>Share Your Live Location</h3>
+      <button class="btn btn-primary" onclick="shareLocation()">Share Location</button>
+      <p id="location-status" class="mt-2">Waiting for location...</p>
+    </section>
+
+    <!-- Storage & Reserves -->
+    <section class="my-5">
+      <h3>Storage & Reserves</h3>
+      <ul>
+        <li>Wheat: <strong>1200 kg</strong></li>
+        <li>Rice: <strong>800 kg</strong></li>
+        <li>Chillies: <strong>100 kg</strong></li>
+      </ul>
+    </section>
+
+    <!-- Transporter Inventory Form -->
+    <section class="my-5">
+      <h3>Log What You're Carrying</h3>
+      <form onsubmit="submitTransportForm(event)">
+        <div class="mb-3">
+          <label for="driverName" class="form-label">Transporter Name</label>
+          <input type="text" id="driverName" class="form-control" required>
+        </div>
+        <div class="mb-3">
+          <label for="itemsCarried" class="form-label">Items Carried (e.g., Tomatoes - 200kg)</label>
+          <textarea id="itemsCarried" class="form-control" rows="3" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+      </form>
+      <p id="formMsg" class="mt-2"></p>
+    </section>
   </main>
 
-  <footer>
+  <footer class="text-center mt-5">
     <p>&copy; 2025 FarmHub | Smart Transport for Smarter Agriculture</p>
   </footer>
+
+  <!-- JavaScript for interactivity -->
+  <script>
+    function shareLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const lat = position.coords.latitude.toFixed(5);
+            const lng = position.coords.longitude.toFixed(5);
+            document.getElementById("location-status").textContent = 
+              `Location Shared: Latitude ${lat}, Longitude ${lng}`;
+            // TODO: Send to backend if needed
+          },
+          () => {
+            document.getElementById("location-status").textContent = 
+              "Failed to retrieve location.";
+          }
+        );
+      } else {
+        document.getElementById("location-status").textContent = 
+          "Geolocation not supported.";
+      }
+    }
+
+    function submitTransportForm(e) {
+      e.preventDefault();
+      const name = document.getElementById('driverName').value;
+      const items = document.getElementById('itemsCarried').value;
+      document.getElementById('formMsg').textContent = 
+        `${name} logged carrying: ${items}`;
+      // TODO: Send to backend if needed
+    }
+  </script>
 </body>
 </html>
