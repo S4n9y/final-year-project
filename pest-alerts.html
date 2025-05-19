@@ -27,38 +27,22 @@
 
   <main class="container my-5">
     <div class="alert alert-warning text-center shadow-sm">
-      <strong>⚠️ Alert:</strong> High risk of **Aphid infestation** in your region this week.
+      <strong>⚠️ Alert:</strong> High risk of <b>Aphid infestation</b> in your region this week.
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <select id="cropFilter" class="form-select w-auto" onchange="filterByCrop(this.value)">
+        <option value="">All Crops</option>
+        <option value="Maize">Maize</option>
+        <option value="Tomato">Tomato</option>
+        <option value="Wheat">Wheat</option>
+      </select>
+      <button onclick="fetchPestAlerts()" class="btn btn-outline-success">🔄 Refresh Alerts</button>
     </div>
 
     <h3 class="text-success mb-3">Latest Pest Warnings</h3>
     <div class="row" id="pest-alerts">
-      <!-- Sample alerts (static for now, can be dynamic later) -->
-      <div class="col-md-4 mb-4">
-        <div class="card h-100 shadow-sm">
-          <div class="card-body">
-            <h5 class="card-title">Fall Armyworm</h5>
-            <p class="card-text">Detected in maize crops. Monitor fields daily and apply neem-based pesticides if needed.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4 mb-4">
-        <div class="card h-100 shadow-sm">
-          <div class="card-body">
-            <h5 class="card-title">Aphids</h5>
-            <p class="card-text">Spread rapidly in warm climates. Use yellow sticky traps and maintain crop hygiene.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4 mb-4">
-        <div class="card h-100 shadow-sm">
-          <div class="card-body">
-            <h5 class="card-title">Whiteflies</h5>
-            <p class="card-text">Seen in tomato fields. Recommend using insecticidal soaps or biocontrol agents.</p>
-          </div>
-        </div>
-      </div>
+      <!-- Alerts will be populated dynamically -->
     </div>
 
     <h3 class="text-success mt-5 mb-3">Prevention Tips</h3>
@@ -74,5 +58,60 @@
     &copy; 2025 FarmHub | Defending Your Crops, One Alert at a Time 🌾
   </footer>
 
+  <!-- 🔽 DYNAMIC SCRIPT FOR ALERTS -->
+  <script>
+    const dummyAlerts = [
+      {
+        name: "Fall Armyworm",
+        details: "Detected in maize crops. Monitor fields daily and apply neem-based pesticides if needed.",
+        crop: "Maize"
+      },
+      {
+        name: "Aphids",
+        details: "Spread rapidly in warm climates. Use yellow sticky traps and maintain crop hygiene.",
+        crop: "Wheat"
+      },
+      {
+        name: "Whiteflies",
+        details: "Seen in tomato fields. Recommend using insecticidal soaps or biocontrol agents.",
+        crop: "Tomato"
+      }
+    ];
+
+    function fetchPestAlerts() {
+      const container = document.getElementById("pest-alerts");
+      container.innerHTML = "";
+      const selectedCrop = document.getElementById("cropFilter").value;
+
+      const filtered = dummyAlerts.filter(alert =>
+        !selectedCrop || alert.crop === selectedCrop
+      );
+
+      if (filtered.length === 0) {
+        container.innerHTML = `<div class="col-12 text-center"><p class="text-muted">No pest alerts for selected crop.</p></div>`;
+        return;
+      }
+
+      filtered.forEach(alert => {
+        container.innerHTML += `
+          <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">${alert.name}</h5>
+                <p class="card-text">${alert.details}</p>
+                <p class="text-muted small">Crop: ${alert.crop}</p>
+              </div>
+            </div>
+          </div>`;
+      });
+    }
+
+    function filterByCrop(crop) {
+      fetchPestAlerts();
+    }
+
+    // Load on page load
+    window.onload = fetchPestAlerts;
+  </script>
 </body>
 </html>
