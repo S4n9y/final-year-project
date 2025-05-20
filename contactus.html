@@ -1,33 +1,106 @@
-
-<section id="contact" class="content">
-    <a href = homepage.html >homepage</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us - FarmHub</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f9f4;
+    }
+    nav {
+      background: #2e7d32;
+      padding: 10px 20px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .content {
+      max-width: 500px;
+      margin: 50px auto;
+      padding: 20px;
+    }
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #2e7d32;
+      text-align: center;
+    }
+    label {
+      font-weight: bold;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #2e7d32;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #1b5e20;
+    }
+  </style>
+</head>
+<body>
+  <nav><a href="homepage.html">← Back to Home</a></nav>
+  <div class="content">
     <h2>Contact Us</h2>
-    <p style="text-align: center;">If you have any queries, feedback, or collaboration ideas, feel free to reach out.</p>
-  
-    <div style="max-width: 600px; margin: auto; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-      <form action="https://formspree.io/f/your-form-id" method="POST">
-        <label for="name" style="font-weight: 600;">Your Name:</label><br>
-        <input type="text" name="name" id="name" placeholder="Enter your name" required
-          style="width: 100%; padding: 10px; margin: 8px 0 20px; border: 1px solid #ccc; border-radius: 5px;"><br>
-  
-        <label for="email" style="font-weight: 600;">Email:</label><br>
-        <input type="email" name="email" id="email" placeholder="Enter your email" required
-          style="width: 100%; padding: 10px; margin: 8px 0 20px; border: 1px solid #ccc; border-radius: 5px;"><br>
-  
-        <label for="message" style="font-weight: 600;">Message:</label><br>
-        <textarea name="message" id="message" placeholder="Write your message" rows="5" required
-          style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 20px;"></textarea><br>
-  
-        <button type="submit"
-          style="width: 100%; padding: 10px; background-color: #2e7d32; color: white; border: none; border-radius: 5px; font-weight: 600; cursor: pointer;">
-          Send Message
-        </button>
-      </form>
-  
-      <div style="margin-top: 20px; text-align: center;">
-        <p><strong>Email:</strong> agriboost2025@projectmail.com</p>
-        <p><strong>Phone:</strong> +91 98765 43210</p>
-      </div>
-    </div>
-  </section>
-  
+    <form id="contactForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" placeholder="Your full name" required />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="Your email" required />
+
+      <label for="subject">Subject:</label>
+      <input type="text" id="subject" name="subject" placeholder="Subject of your message" required />
+
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" placeholder="Type your message here..." rows="5" required></textarea>
+
+      <button type="submit">Send</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const form = e.target;
+      const data = {
+        name: form.name.value,
+        email: form.email.value,
+        subject: form.subject.value,
+        message: form.message.value
+      };
+
+      const res = await fetch("/contactus", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
+
+      const result = await res.json();
+      alert(result.message);
+    });
+  </script>
+</body>
+</html>
