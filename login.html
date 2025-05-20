@@ -1,126 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - FarmHub</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f4f9f4;
-        }
-
-        nav {
-            background: #2e7d32;
-            padding: 10px 20px;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .content {
-            max-width: 400px;
-            margin: 50px auto;
-            padding: 20px;
-        }
-
-        form {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        h2 {
-            color: #2e7d32;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        input[type="email"],
-        input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-
-        button {
-            width: 100%;
-            padding: 10px;
-            background: #2e7d32;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-bottom: 10px;
-        }
-
-        button:hover {
-            background: #1b5e20;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - FarmHub</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f9f4;
+    }
+    nav {
+      background: #2e7d32;
+      padding: 10px 20px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .content {
+      max-width: 400px;
+      margin: 50px auto;
+      padding: 20px;
+    }
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #2e7d32;
+      text-align: center;
+    }
+    label {
+      font-weight: bold;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #2e7d32;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #1b5e20;
+    }
+  </style>
 </head>
 <body>
-    <nav>
-        <a href="homepage.html">← Back to Home</a>
-    </nav>
+  <nav><a href="homepage.html">← Back to Home</a></nav>
+  <div class="content">
+    <h2>Login to FarmHub</h2>
+    <form id="loginForm">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="identifier" placeholder="Enter your email" required />
 
-    <section class="content">
-        <h2>Login to FarmHub</h2>
-        <form action="login_handler.php" method="POST" onsubmit="return validateForm()">
-            <div>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" placeholder="Enter your password" required />
 
-            <div>
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
+      <button type="submit">Login</button>
+      <p style="text-align:center; margin-top:10px;">
+        Don't have an account?
+        <a href="signup.html" style="color:#2e7d32; font-weight:bold; text-decoration:underline;">Sign up</a>
+      </p>
+    </form>
+  </div>
 
-            <button type="submit">Login</button>
-            <button type="submit" name="role" value="farmer" style="background-color: #2e7d32;">Login as Farmer</button>
-            <button type="submit" name="role" value="vendor" style="background-color: #f57c00;">Login as Vendor</button>
-            <button type="submit" name="role" value="transporter" style="background-color: #1976d2;">Login as Transporter</button>
-        </form>
-    </section>
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", async function (e) {
+      e.preventDefault();
 
-    <script>
-        function validateForm() {
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
 
-            if (!email || !password) {
-                alert('Please fill in all fields');
-                return false;
-            }
+      const res = await fetch("/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ identifier: email, password })
+      });
 
-            if (!isValidEmail(email)) {
-                alert('Please enter a valid email address');
-                return false;
-            }
+      const data = await res.json();
 
-            return true;
-        }
-
-        function isValidEmail(email) {
-            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return re.test(email);
-        }
-    </script>
+      if (res.ok && data.redirect) {
+        window.location.href = data.redirect; // 😘 Smooth redirect to homepage.html
+      } else {
+        alert(data.message); // show error if login fails
+      }
+    });
+  </script>
 </body>
 </html>
