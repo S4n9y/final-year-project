@@ -39,21 +39,29 @@
     <div class="result" id="result"></div>
   </div>
 
-  <script>
-    function calculateProfit() {
-      const revenue = parseFloat(document.getElementById('revenue').value);
-      const cost = parseFloat(document.getElementById('cost').value);
-      const resultDiv = document.getElementById('result');
+ <script>
+  function calculateProfit() {
+    const revenue = parseFloat(document.getElementById('revenue').value);
+    const cost = parseFloat(document.getElementById('cost').value);
+    const resultDiv = document.getElementById('result');
 
-      if (isNaN(revenue) || isNaN(cost)) {
-        resultDiv.textContent = "Please enter valid numbers.";
-        return;
-      }
+    if (isNaN(revenue) || isNaN(cost)) {
+      resultDiv.textContent = "Please enter valid numbers.";
+      return;
+    }
 
+    if (revenue > cost) {
       const profit = revenue - cost;
       resultDiv.textContent = `Estimated Profit: ₹${profit}`;
+    } else if (cost > revenue) {
+      const loss = cost - revenue;
+      resultDiv.textContent = `Estimated Loss: ₹${loss}`;
+    } else {
+      resultDiv.textContent = "You broke even — No profit or loss.";
     }
-  </script>
+  }
+</script>
+
 
 </body>
 </html>
