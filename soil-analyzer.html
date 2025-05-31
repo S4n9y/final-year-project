@@ -9,6 +9,7 @@
 </head>
 <body>
 
+  <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-success px-3">
     <a class="navbar-brand" href="#">AgriSmart</a>
     <div class="collapse navbar-collapse">
@@ -16,17 +17,20 @@
         <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="About-us.html">About</a></li>
         <li class="nav-item"><a class="nav-link" href="contactus.html">Contact</a></li>
-        <li class="nav-item"><a class="nav-link" href="About-us.html">about us</a></li>
+        <li class="nav-item"><a class="nav-link" href="About-us.html">About Us</a></li>
       </ul>
     </div>
   </nav>
 
+  <!-- Header -->
   <header class="text-center bg-light py-5">
     <h1 class="display-5 text-success">Smart Soil Analyzer 🌱</h1>
     <p class="lead">Know your soil. Grow smarter. Boost your yields with science-backed insights.</p>
   </header>
 
+  <!-- Main Content -->
   <main class="container my-5">
+    <!-- Info Section -->
     <section>
       <h2 class="text-success">What is Soil Analysis?</h2>
       <p>
@@ -34,6 +38,7 @@
       </p>
     </section>
 
+    <!-- Benefits -->
     <section class="mt-4">
       <h2 class="text-success">Benefits of Using Our Soil Analyzer</h2>
       <ul>
@@ -45,22 +50,105 @@
       </ul>
     </section>
 
+    <!-- How it Works -->
     <section class="mt-4">
       <h2 class="text-success">How It Works</h2>
       <ol>
         <li>Collect a soil sample from your farm.</li>
-        <li>Upload the sample report or data to our system.</li>
-        <li>Our AI engine analyzes the data and provides instant recommendations.</li>
-        <li>Get a downloadable report with improvement tips and best-fit crops.</li>
+        <li>Input the sample data below.</li>
+        <li>Click "Analyze" to get your result instantly.</li>
+        <li>Use our recommendations to optimize your soil.</li>
       </ol>
     </section>
 
-    <div class="text-center mt-5">
-      <a href="soil-analysis-tool.html" class="btn btn-success btn-lg">Launch Soil Analyzer</a>
-    </div>
-  </main>
+    <!-- Analyzer Form -->
+   <!-- Soil Type Selector -->
+<div class="container my-4">
+  <label for="soilType" class="form-label">Select Soil Type:</label>
+  <select class="form-select" id="soilType">
+    <option value="alluvial">Alluvial</option>
+    <option value="black">Black</option>
+    <option value="red">Red</option>
+    <option value="laterite">Laterite</option>
+    <option value="arid">Arid</option>
+    <option value="saline">Saline</option>
+    <option value="peaty">Peaty</option>
+    <option value="forest">Forest</option>
+  </select>
+</div>
 
-  <footer class="text-center bg-success text-white py-3">
+<!-- Input Fields -->
+<div class="container">
+  <label>pH Level: <input type="number" step="0.1" id="ph" class="form-control"></label><br>
+  <label>Nitrogen (ppm): <input type="number" id="n" class="form-control"></label><br>
+  <label>Phosphorus (ppm): <input type="number" id="p" class="form-control"></label><br>
+  <label>Potassium (ppm): <input type="number" id="k" class="form-control"></label><br>
+  <button onclick="analyzeSoil()" class="btn btn-success mt-2">Analyze Soil</button>
+</div>
+
+<!-- Ideal Ranges Display -->
+<div class="container bg-light p-3 my-3" id="idealRanges">
+  <strong>Ideal Ranges:</strong>
+  <p id="idealText"></p>
+</div>
+
+<!-- Result Display -->
+<div class="container p-3" id="result"></div>
+
+<script>
+const soilIdealRanges = {
+  alluvial: { ph: [6.5, 7.5], n: [50, 120], p: [30, 60], k: [40, 80], crops: ['Wheat', 'Rice', 'Sugarcane'] },
+  black:    { ph: [6.0, 7.5], n: [60, 100], p: [20, 50], k: [50, 100], crops: ['Cotton', 'Soybean', 'Sorghum'] },
+  red:      { ph: [5.5, 6.5], n: [40, 90],  p: [15, 35], k: [20, 50], crops: ['Millets', 'Groundnut', 'Pulses'] },
+  laterite: { ph: [5.0, 6.5], n: [30, 80],  p: [20, 40], k: [25, 60], crops: ['Tea', 'Coffee', 'Cashew'] },
+  arid:     { ph: [7.0, 8.5], n: [20, 60],  p: [10, 25], k: [15, 35], crops: ['Barley', 'Pearl Millet', 'Date Palm'] },
+  saline:   { ph: [7.5, 8.5], n: [20, 50],  p: [10, 20], k: [10, 30], crops: ['Salt-tolerant Rice', 'Cotton', 'Mustard'] },
+  peaty:    { ph: [4.0, 5.5], n: [80, 120], p: [30, 50], k: [50, 90], crops: ['Pineapple', 'Coconut', 'Root Crops'] },
+  forest:   { ph: [4.5, 6.0], n: [60, 100], p: [25, 45], k: [30, 70], crops: ['Spices', 'Ginger', 'Medicinal Herbs'] }
+};
+
+document.getElementById("soilType").addEventListener("change", updateIdealRanges);
+
+function updateIdealRanges() {
+  const soil = document.getElementById("soilType").value;
+  const range = soilIdealRanges[soil];
+  document.getElementById("idealText").innerHTML =
+    `pH: ${range.ph[0]} - ${range.ph[1]}<br>` +
+    `Nitrogen: ${range.n[0]} - ${range.n[1]} ppm<br>` +
+    `Phosphorus: ${range.p[0]} - ${range.p[1]} ppm<br>` +
+    `Potassium: ${range.k[0]} - ${range.k[1]} ppm`;
+}
+
+function analyzeSoil() {
+  const soil = document.getElementById("soilType").value;
+  const { ph: [phLow, phHigh], n: [nLow, nHigh], p: [pLow, pHigh], k: [kLow, kHigh], crops } = soilIdealRanges[soil];
+
+  const ph = parseFloat(document.getElementById('ph').value);
+  const n = parseFloat(document.getElementById('n').value);
+  const p = parseFloat(document.getElementById('p').value);
+  const k = parseFloat(document.getElementById('k').value);
+  const result = document.getElementById('result');
+
+  let message = `<strong>Soil Type: ${soil.charAt(0).toUpperCase() + soil.slice(1)}</strong><br>`;
+
+  let healthy = true;
+  message += ph < phLow || ph > phHigh ? (healthy = false, "⚠️ pH is not optimal.<br>") : "✅ pH is in optimal range.<br>";
+  message += n < nLow ? (healthy = false, "🟡 Nitrogen is low.<br>") : n > nHigh ? (healthy = false, "🔴 Nitrogen is too high.<br>") : "✅ Nitrogen is optimal.<br>";
+  message += p < pLow ? (healthy = false, "🟡 Phosphorus is low.<br>") : p > pHigh ? (healthy = false, "🔴 Phosphorus is too high.<br>") : "✅ Phosphorus is optimal.<br>";
+  message += k < kLow ? (healthy = false, "🟡 Potassium is low.<br>") : k > kHigh ? (healthy = false, "🔴 Potassium is too high.<br>") : "✅ Potassium is optimal.<br>";
+
+  if (healthy) {
+    message += `<br>🎉 <strong>Soil is healthy!</strong><br>🌱 Ideal Crops: <em>${crops.join(", ")}</em>`;
+  } else {
+    message += `<br>📌 <strong>Consider improving soil quality before planting.</strong><br>Suggested Crops for this soil type: <em>${crops.join(", ")}</em>`;
+  }
+
+  result.innerHTML = message;
+}
+</script>
+
+  <!-- Footer -->
+  <footer class="text-center bg-success text-white py-3 mt-5">
     &copy; 2025 Farm-Hub | Empowering Farmers with Technology 🌾
   </footer>
 

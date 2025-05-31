@@ -1,0 +1,27 @@
+<form>
+  <label>Soil pH:</label><input type="number" id="ph" />
+  <label>Nitrogen (ppm):</label><input type="number" id="n" />
+  <label>Phosphorus (ppm):</label><input type="number" id="p" />
+  <label>Potassium (ppm):</label><input type="number" id="k" />
+  <button onclick="analyzeSoil()">Analyze</button>
+</form>
+<div id="result"></div>
+
+
+<script>
+function analyzeSoil() {
+  const ph = parseFloat(document.getElementById('ph').value);
+  const n = parseFloat(document.getElementById('n').value);
+  const p = parseFloat(document.getElementById('p').value);
+  const k = parseFloat(document.getElementById('k').value);
+  const result = document.getElementById('result');
+
+  if (ph < 5.5 || ph > 7.5) {
+    result.innerText = "⚠️ pH not optimal!";
+  } else if (n < 40 || p < 20 || k < 30) {
+    result.innerText = "⚠️ Nutrient levels low!";
+  } else {
+    result.innerText = "✅ Soil is healthy and ready for planting!";
+  }
+}
+</script>
