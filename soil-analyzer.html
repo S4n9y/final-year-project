@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Soil Analyzer - Smart Farming</title>
+  <title>Farm-Hub</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <link rel="stylesheet" href="soil-analyzer.css"/>
 </head>
@@ -11,11 +11,11 @@
 
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-success px-3">
-    <a class="navbar-brand" href="#">AgriSmart</a>
+    <a class="navbar-brand" href="#">Farm-Hub</a>
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="About-us.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="homepage.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="FAQ.html">FAQ</a></li>
         <li class="nav-item"><a class="nav-link" href="contactus.html">Contact</a></li>
         <li class="nav-item"><a class="nav-link" href="About-us.html">About Us</a></li>
       </ul>
@@ -94,58 +94,52 @@
 
 <!-- Result Display -->
 <div class="container p-3" id="result"></div>
-
 <script>
-const soilIdealRanges = {
-  alluvial: { ph: [6.5, 7.5], n: [50, 120], p: [30, 60], k: [40, 80], crops: ['Wheat', 'Rice', 'Sugarcane'] },
-  black:    { ph: [6.0, 7.5], n: [60, 100], p: [20, 50], k: [50, 100], crops: ['Cotton', 'Soybean', 'Sorghum'] },
-  red:      { ph: [5.5, 6.5], n: [40, 90],  p: [15, 35], k: [20, 50], crops: ['Millets', 'Groundnut', 'Pulses'] },
-  laterite: { ph: [5.0, 6.5], n: [30, 80],  p: [20, 40], k: [25, 60], crops: ['Tea', 'Coffee', 'Cashew'] },
-  arid:     { ph: [7.0, 8.5], n: [20, 60],  p: [10, 25], k: [15, 35], crops: ['Barley', 'Pearl Millet', 'Date Palm'] },
-  saline:   { ph: [7.5, 8.5], n: [20, 50],  p: [10, 20], k: [10, 30], crops: ['Salt-tolerant Rice', 'Cotton', 'Mustard'] },
-  peaty:    { ph: [4.0, 5.5], n: [80, 120], p: [30, 50], k: [50, 90], crops: ['Pineapple', 'Coconut', 'Root Crops'] },
-  forest:   { ph: [4.5, 6.0], n: [60, 100], p: [25, 45], k: [30, 70], crops: ['Spices', 'Ginger', 'Medicinal Herbs'] }
-};
+  // Existing code above...
 
-document.getElementById("soilType").addEventListener("change", updateIdealRanges);
+  function analyzeSoil() {
+    const soil = document.getElementById("soilType").value;
+    const ph = parseFloat(document.getElementById("ph").value);
+    const n = parseFloat(document.getElementById("n").value);
+    const p = parseFloat(document.getElementById("p").value);
+    const k = parseFloat(document.getElementById("k").value);
 
-function updateIdealRanges() {
-  const soil = document.getElementById("soilType").value;
-  const range = soilIdealRanges[soil];
-  document.getElementById("idealText").innerHTML =
-    `pH: ${range.ph[0]} - ${range.ph[1]}<br>` +
-    `Nitrogen: ${range.n[0]} - ${range.n[1]} ppm<br>` +
-    `Phosphorus: ${range.p[0]} - ${range.p[1]} ppm<br>` +
-    `Potassium: ${range.k[0]} - ${range.k[1]} ppm`;
-}
+    const resultDiv = document.getElementById("result");
 
-function analyzeSoil() {
-  const soil = document.getElementById("soilType").value;
-  const { ph: [phLow, phHigh], n: [nLow, nHigh], p: [pLow, pHigh], k: [kLow, kHigh], crops } = soilIdealRanges[soil];
+    if (isNaN(ph) || isNaN(n) || isNaN(p) || isNaN(k)) {
+      resultDiv.innerHTML = `<div class="alert alert-danger">Please fill in all fields with valid numbers.</div>`;
+      return;
+    }
 
-  const ph = parseFloat(document.getElementById('ph').value);
-  const n = parseFloat(document.getElementById('n').value);
-  const p = parseFloat(document.getElementById('p').value);
-  const k = parseFloat(document.getElementById('k').value);
-  const result = document.getElementById('result');
+    const ideal = soilIdealRanges[soil];
+    const messages = [];
 
-  let message = `<strong>Soil Type: ${soil.charAt(0).toUpperCase() + soil.slice(1)}</strong><br>`;
+    function checkRange(value, range, label) {
+      if (value < range[0]) return `${label} is too low (Ideal: ${range[0]} - ${range[1]})`;
+      if (value > range[1]) return `${label} is too high (Ideal: ${range[0]} - ${range[1]})`;
+      return `${label} is in the ideal range ✅`;
+    }
 
-  let healthy = true;
-  message += ph < phLow || ph > phHigh ? (healthy = false, "⚠️ pH is not optimal.<br>") : "✅ pH is in optimal range.<br>";
-  message += n < nLow ? (healthy = false, "🟡 Nitrogen is low.<br>") : n > nHigh ? (healthy = false, "🔴 Nitrogen is too high.<br>") : "✅ Nitrogen is optimal.<br>";
-  message += p < pLow ? (healthy = false, "🟡 Phosphorus is low.<br>") : p > pHigh ? (healthy = false, "🔴 Phosphorus is too high.<br>") : "✅ Phosphorus is optimal.<br>";
-  message += k < kLow ? (healthy = false, "🟡 Potassium is low.<br>") : k > kHigh ? (healthy = false, "🔴 Potassium is too high.<br>") : "✅ Potassium is optimal.<br>";
+    messages.push(checkRange(ph, ideal.ph, "pH Level"));
+    messages.push(checkRange(n, ideal.n, "Nitrogen"));
+    messages.push(checkRange(p, ideal.p, "Phosphorus"));
+    messages.push(checkRange(k, ideal.k, "Potassium"));
 
-  if (healthy) {
-    message += `<br>🎉 <strong>Soil is healthy!</strong><br>🌱 Ideal Crops: <em>${crops.join(", ")}</em>`;
-  } else {
-    message += `<br>📌 <strong>Consider improving soil quality before planting.</strong><br>Suggested Crops for this soil type: <em>${crops.join(", ")}</em>`;
+    const crops = ideal.crops.join(', ');
+
+    resultDiv.innerHTML = `
+      <div class="card border-success">
+        <div class="card-body">
+          <h4 class="card-title text-success">Analysis Result</h4>
+          <ul>${messages.map(msg => `<li>${msg}</li>`).join('')}</ul>
+          <p><strong>Recommended Crops:</strong> ${crops}</p>
+        </div>
+      </div>
+    `;
   }
-
-  result.innerHTML = message;
-}
 </script>
+
+
 
   <!-- Footer -->
   <footer class="text-center bg-success text-white py-3 mt-5">
