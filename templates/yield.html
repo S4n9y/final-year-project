@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head><title>Yield Prediction</title></head>
+<body>
+  <h1>Yield Prediction</h1>
+  <form action="/predict_yield" method="POST">
+    Area (hectares): <input type="text" name="area"><br>
+    Rainfall (mm): <input type="text" name="rainfall"><br>
+    Temperature (°C): <input type="text" name="temperature"><br>
+    <input type="submit" value="Predict">
+  </form>
+  {% if prediction_text %}
+    <h2>{{ prediction_text }}</h2>
+  {% endif %}
+  <a href="/">Go to Crop Prediction</a>
+</body>
+</html>
