@@ -1,0 +1,248 @@
+[33mcommit 4fb8507e16884d28c7e2dd55d45532cc473e6dbb[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: S4n9y <sanketdhawade2002@gmail.com>
+Date:   Mon Jun 2 22:58:48 2025 +0530
+
+     model back-end updated
+
+[33mcommit 9cf3f9b7d36f17f0b494afcc172b2e327a12bddc[m
+Author: S4n9y <sanketdhawade2002@gmail.com>
+Date:   Mon Jun 2 13:08:13 2025 +0530
+
+     analyser updated
+
+[33mcommit b84881d4fc3395a21ceb5e226f7ca643c5f6c8d3[m
+Author: S4n9y <sanketdhawade2002@gmail.com>
+Date:   Sun Jun 1 22:58:32 2025 +0530
+
+     analyser updated
+
+[33mcommit bd246e458d1320b20c38b27abd158f421c08829b[m
+Author: S4n9y <sanketdhawade2002@gmail.com>
+Date:   Sat May 31 11:55:28 2025 +0530
+
+    soil health analyser is done
+
+[33mcommit ee4bcf68888b86f56c9a24cdeb171d61fe49491b[m
+Author: S4n9y <sanketdhawade2002@gmail.com>
+Date:   Fri May 30 12:41:23 2025 +0530
+
+    fixed profit calculator.html
+
+[33mcommit 475722562c1d95313d3e70307fe19ab38e3eff01[m
+Author: S4n9y <sanketdhawade2002@gmail.com>
+Date:   Wed May 28 23:13:34 2025 +0530
+
+     a minor change
+
+[33mcommit 32ac3fda7b36c2a133a2214ea469b24972ab838b[m
+Author: Aditya Kadam <159811833+AdityaK-024@users.noreply.github.com>
+Date:   Tue May 20 13:09:57 2025 +0530
+
+    Deleted
+
+[33mcommit 4b8b57cb3d605f9f28c21ac18fb0691ee6800afd[m
+Author: Aditya Kadam <159811833+AdityaK-024@users.noreply.github.com>
+Date:   Tue May 20 13:09:37 2025 +0530
+
+    Delete .gitignore.txt
+
+[33mcommit 63a5628f2958edbb9bfd5694e6ac24c1dbd244d8[m
+Author: Aditya Kadam <159811833+AdityaK-024@users.noreply.github.com>
+Date:   Tue May 20 13:08:48 2025 +0530
+
+    Create .gitignore
+
+[33mcommit 9faaf15d7c7669489fa8f021975cd01a9eb8c045[m
+Author: Aditya <adityachkadam@gmail.com>
+Date:   Tue May 20 13:04:41 2025 +0530
+
+    Signup and Login done
+
+[33mcommit 83749abc7e4575bf771eb281fc0fb389079fd62c[m
+Merge: d0bf369 038044b
+Author: S4n9y <sanketdhawade2002@gmail.com>
+Date:   Mon May 19 22:24:41 2025 +0530
+
+     crop model is ready but problem deploying conpletely
+
+[33mcommit d0bf369e69891b5a56c36c418bb34aaa4ee14764[m
+Author: S4n9y <sanketdhawade2002@gmail.com>
+Date:   Mon May 19 22:18:28 2025 +0530
+
+     finally a crop reccomendation model but it's not working for now
+
+[33mcommit 038044bee493bb064c7f20c08c6c01de50018550[m
+Merge: 2723ac6 839791c
+Author: Aditya <adityachkadam@gmail.com>
+Date:   Mon May 19 11:37:08 2025 +0530
+
+    Image Changes Made
+
+[33mcommit 2723ac6f25fab66e6d808a47d4a8506b87d04b7f[m
+Author: Aditya <adityachkadam@gmail.com>
+Date:   Mon May 19 11:31:08 2025 +0530
+
+    Image Changes Made
+
+[33mcommit 839791c72631e643280ddfc546732d0a8d5fb4a8[m
+Author: S4n9y <sanketdhawade2002@gmail.com>
+Date:   Mon May 19 08:51:26 2025 +0530
+
+     made changes in pest-disease page
+
+[33mcommit 299ffaa740cbec1944ebb0acd90045cb8c898337[m
+Author: S4n9y <sanketdhawade2002@gmail.com>
+Date:   Sun May 18 19:36:59 2025 +0530
+
+    made changes in logistics and transport and market price
+
+[33mcommit b2fbe76c6095a57c97a121c10b874930d221b83c[m
+Merge: 637d1f7 542770f
+Author: S4n9y <sanketdhawade2002@gmail.com>
+Date:   Fri May 16 13:37:42 2025 +0530
+
+    Merge branch 'main' of https://github.com/S4n9y/final-year-project
+
+[33mcommit 637d1f71a0f42d7931c2af40fd92e05720c74b02[m
+Author: S4n9y <sanketdhawade2002@gmail.com>
+Date:   Fri May 16 13:35:34 2025 +0530
+
+    new buttons
+
+[33mcommit 542770ff3c5b029278b9eecfb9dbfa0d1fc95952[m
+Author: Aditya <adityachkadam@gmail.com>
+Date:   Fri May 16 13:25:44 2025 +0530
+
+    Image Changes Made
+
+[33mcommit 3f3007a7f7fa08797965946f4bac2e3de7ed7d8c[m
+Author: Aditya <adityachkadam@gmail.com>
+Date:   Fri May 16 12:47:53 2025 +0530
+
+    Image Changes Made
+
+[33mcommit f2f13841d3054d2fb9316e89713a55367e14c0fe[m
+Author: Aditya <adityachkadam@gmail.com>
+Date:   Fri May 16 11:49:02 2025 +0530
+
+    Made Little Change
+
+[33mcommit f96e3deab786ae4b5173a9f46df69b7dd5fb034a[m
+Author: S4n9y <sanketdhawade2002@gmail.com>
+Date:   Thu May 15 21:52:22 2025 +0530
+
+    updated in crop prediction
+
+[33mcommit b0752e894e7a143411d8a30c0389cb8ddfc3f1c1[m
+Author: S4n9y <sanketdhawade2002@gmail.com>
+Date:   Wed May 14 23:55:31 2025 +0530
+
+    Finally a huge update
+
+[33mcommit 943695ad2865f2ad896afe30f891be4fa67567b6[m
+Author: Aditya <adityachkadam@gmail.com>
+Date:   Wed May 14 19:49:57 2025 +0530
+
+    Changes Made
+
+[33mcommit a749ebd0a938b8dd10cb697669471465fa88e4fc[m
+Author: Aditya <adityachkadam@gmail.com>
+Date:   Tue May 13 22:52:00 2025 +0530
+
+    Added FAQs and Storage Guidelines
+
+[33mcommit 1f80a98893d7e77e52f69f76b62b5cf036ca158e[m
+Author: Aditya <adityachkadam@gmail.com>
+Date:   Tue May 13 21:47:57 2025 +0530
+
+    Made Changes
+
+[33mcommit 17e741ebae668efaefc39ea902cb53ddc4d9eae0[m
+Author: Aditya <adityachkadam@gmail.com>
+Date:   Tue May 13 13:43:26 2025 +0530
+
+    Made change
+
+[33mcommit 5e6d69ed01b83136c1ca07f2b3cd63b06437c728[m
+Merge: e08e1ad 4095b9d
+Author: S4n9y <sanketdhawade2002@gmail.com>
+Date:   Tue May 13 13:38:51 2025 +0530
+
+    made little changes
+
+[33mcommit e08e1ad91ce91801fdb7c112ca06c082373b060b[m
+Author: S4n9y <sanketdhawade2002@gmail.com>
+Date:   Tue May 13 13:25:01 2025 +0530
+
+    made little changes
+
+[33mcommit 4095b9d61816c696dcf1b51927a345e3e69f6cda[m
+Author: S4n9y <126079196+S4n9y@users.noreply.github.com>
+Date:   Tue May 13 13:22:43 2025 +0530
+
+    made changes
+
+[33mcommit 5ab34f119d2b24c4d7b9d7ba4a8333c73c3e76ae[m
+Author: Aditya <adityachkadam@gmail.com>
+Date:   Sat May 10 11:42:51 2025 +0530
+
+    Changes Made
+
+[33mcommit fe47b8b52234a6ab4b72b7f370ef5659c80f1f60[m
+Author: S4n9y <126079196+S4n9y@users.noreply.github.com>
+Date:   Tue Apr 29 16:50:28 2025 +0530
+
+    Add files via upload
+    
+    i did some changes  it's major update
+
+[33mcommit ff34cb2f728913ca93ddb604ca86ae47ff9375ab[m
+Author: S4n9y <126079196+S4n9y@users.noreply.github.com>
+Date:   Fri Apr 18 17:20:29 2025 +0530
+
+    Add files via upload
+    
+    i  had added some files for basic infrastructure
+
+[33mcommit 42b77761b577761804307840a982ba30a64a9252[m
+Merge: 66bdcc0 75d73e5
+Author: Sainath <sailingampalli1601@gmail.com>
+Date:   Tue Apr 8 14:15:20 2025 +0530
+
+    made change
+
+[33mcommit 66bdcc073bee5c458c170b5d65c4710ef28d572d[m
+Author: Sainath <sailingampalli1601@gmail.com>
+Date:   Tue Apr 8 14:01:00 2025 +0530
+
+    this is a bad boy for sanket
+
+[33mcommit 75d73e56a0b29e423b00c4362fb6784de096f1c6[m
+Author: SanyuktaDhawade <sanyuktadhawade1999@gmail.com>
+Date:   Fri Apr 4 13:24:36 2025 +0530
+
+     le ho gaya bhai
+
+[33mcommit 74fcc6b06da5ee6f8390b31d3bba2d778c2af7db[m
+Author: Sainath <sailingampalli1601@gmail.com>
+Date:   Fri Apr 4 13:08:05 2025 +0530
+
+     made change
+
+[33mcommit 5e1080de352f3e77b2fcce3511eac3872c6cc30f[m
+Author: Sainath <sailingampalli1601@gmail.com>
+Date:   Fri Apr 4 12:57:00 2025 +0530
+
+    Change
+
+[33mcommit 00601ff3eb37076d2eb53b3fc1a00ad9bc677eb5[m
+Author: Aditya <adityachkadam@gmail.com>
+Date:   Fri Apr 4 12:39:16 2025 +0530
+
+    First Commit
+
+[33mcommit aaf37e092883542247b59d4246400720c3491337[m
+Author: S4n9y <126079196+S4n9y@users.noreply.github.com>
+Date:   Fri Apr 4 08:46:03 2025 +0530
+
+    Initial commit
