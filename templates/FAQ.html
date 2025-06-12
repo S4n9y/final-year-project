@@ -4,16 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FarmHub - Storage Guidelines FAQ</title>
-  <link href="FAQ.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/FAQ.css') }}">
 </head>
 <body>
   <nav>
     <a href="#" class="logo">FarmHub</a>
     <ul>
-      <li><a href="homepage.html">Home</a></li>
-      <li><a href="contactus.html">ContactUs</a></li>
-      <li><a href="About-us.html">About-us</a></li>
-      <li><a href="login.html">login </a></li>
+      <li><a href="{{ url_for('home') }}">Home</a></li>
+      <li><a href="{{ url_for('contact_us') }}">Contact Us</a></li>
+      <li><a href="{{ url_for('about_us') }}">about-us Us</a></li>
+      <li><a href="{{ url_for('login') }}">Login</a></li>
     </ul>
   </nav>
 <section id="faq">

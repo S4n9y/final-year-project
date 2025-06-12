@@ -5,22 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>FarmHub | Expense Tracker</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
-  <link rel="stylesheet" href="expense-tracker.css"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/expense-tracker.css') }}">
 </head>
 <body>
 
   <!-- Navigation Bar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-success px-3">
-    <a class="navbar-brand" href="#">FarmHub</a>
-    <div class="collapse navbar-collapse">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="homepage.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="weather.html">Weather</a></li>
-        <li class="nav-item"><a class="nav-link" href="market-dashboard.html">Market Prices</a></li>
-        <li class="nav-item"><a class="nav-link" href="contactus.html">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
+<nav class="navbar navbar-expand-lg navbar-dark bg-success px-3">
+  <a class="navbar-brand" href="#">FarmHub</a>
+
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+          aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarContent">
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('contact_us') }}">Contact Us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('about_us') }}">About Us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
 
   <!-- Header Section -->
   <header class="bg-light text-center py-5">

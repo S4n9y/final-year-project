@@ -4,18 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Farmer's Storage Guidelines</title>
-  <link href="storageguidelines.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/storageguidelines.css') }}">
 </head>
 <body>
   <nav>
     <a href="#" class="logo">FarmHub</a>
     <ul>
-      <li><a href="homepage.html">Home</a></li>
-      <li><a href="contactus.html">ContactUs</a></li>
-      <li><a href="About-us.css">About-us</a></li>
-      <li><a href="login.html">login </a></li>
-      <li><a href="FAQ.html">FAQ's</a></li>
-      
+      <li><a href="{{ url_for('home') }}" >Home</a></li>
+      <li><a href="{{ url_for('contact_us') }}">Contact Us</a></li>
+      <li><a href="{{ url_for('about_us') }}">about-us Us</a></li>
+      <li><a href="{{ url_for('login') }}">Login</a></li>
+      <li><a href="{{ url_for('faq') }}">FAQ</a></li>
     </ul>
   </nav>
 
@@ -25,7 +24,7 @@
   </header>
 
   <main class="content">
-    <img src="shutterstock_1502024066-scaled.jpg" class="feature-image" alt="Storage Facility">
+<img src="{{ url_for('static', filename='images/shutterstock_1502024066-scaled.jpg') }}" alt="Produce Processing" style="width: 100%; height: auto; display: block;">
 
     <!-- Introduction -->
     <section>

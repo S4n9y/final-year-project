@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Smart Agriculture Solutions</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/homepage.css') }}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <a href="#" class="logo">FarmHub</a>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="{{ url_for('contact_us') }}">Contact Us</a></li>
+      <li><a href="{{ url_for('login') }}">Login</a></li>
+      <li><a href="{{ url_for('about_us') }}">About Us</a></li>
+      <li><a href="{{ url_for('faq') }}">FAQ</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <h1>Enhancing India's Agriculture</h1>
+    <p>Smart Solutions for Managing and Processing Agricultural Produce</p>
+  </header>
+
+  <section class="hero">
+    <h2>Empowering Farmers with Technology</h2>
+  </section>
+
+  <section class="content">
+    <h2>Project Overview</h2>
+    <p>This project focuses on developing innovative and tech-enabled solutions to enhance the primary sector of India – Agriculture. Our aim is to support farmers by improving logistics, crop processing, smart recommendations, and market linkages through digital tools.</p>
+
+    <div class="features">
+
+      <!-- Profit Calculator -->
+      <div class="card">
+        <img src="{{ url_for('static', filename='images/images.jpg') }}" alt="Profit Calculator">
+        <div class="card-body">
+          <h5 class="card-title">Profit Calculator</h5>
+          <p class="card-text">Calculate expected profit based on inputs like crop yield, cost, and market price.</p>
+          <a href="{{ url_for('profit_calculator') }}" class="btn btn-success">Calculate Your Profit</a>
+        </div>
+      </div>
+
+      <!-- Expense Tracker -->
+      <div class="card">
+        <img src="{{ url_for('static', filename='images/dea1.JPG') }}" alt="Expense Tracker">
+        <div class="card-body">
+          <h5 class="card-title">Farm Expense Tracker</h5>
+          <p class="card-text">Log your farm costs and calculate profit based on expected yield.</p>
+          <a href="{{ url_for('expense_tracker') }}" class="btn btn-success">Track Now</a>
+        </div>
+      </div>
+
+      <!-- Smart Crop Management -->
+      <div class="card">
+        <img src="{{ url_for('static', filename='images/dea.JPG') }}" alt="Smart Crop Management">
+        <div class="card-body">
+          <h5 class="card-title">Smart Crop Management</h5>
+          <p class="card-text">AI-based crop recommendation and yield prediction.</p>
+          <a href="{{ url_for('smart_crop') }}" class="btn btn-success">Crop Management</a>
+        </div>
+      </div>
+
+      <!-- Produce Processing -->
+      <div class="card">
+        <img src="{{ url_for('static', filename='images/ie.JPG') }}" alt="Produce Processing">
+        <div class="card-body">
+          <h5 class="card-title">Produce Processing</h5>
+          <p class="card-text">Post-harvest handling, grading, storage management, and packaging.</p>
+          <a href="{{ url_for('produce') }}" class="btn btn-success">View</a>
+        </div>
+      </div>
+
+      <!-- Logistics & Transport -->
+      <div class="card">
+        <img src="{{ url_for('static', filename='images/Logistics_Transport.jpeg') }}" alt="Logistics Image">
+        <div class="card-body">
+          <h5 class="card-title">Logistics & Transport</h5>
+          <p class="card-text">Route optimization, vehicle tracking, delay/spoilage alerts, and buyer linkage.</p>
+          <a href="{{ url_for('logistics_transport') }}" class="btn btn-success">View</a>
+        </div>
+      </div>
+
+      <!-- Farmer Dashboard -->
+    
+
+      <!-- Storage Guidelines -->
+      <div class="card">
+        <img src="{{ url_for('static', filename='images/agricultural produce.JPG') }}" alt="Storage Guidelines">
+        <div class="card-body">
+          <h5 class="card-title">Storage Guidelines</h5>
+          <p class="card-text">Practical tips and best practices for preserving produce quality after harvest.</p>
+          <a href="{{ url_for('storage_guidelines') }}" class="btn btn-success">View</a>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="card">
+        <img src="{{ url_for('static', filename='images/FAQS.jpg') }}" alt="FAQ Image">
+        <div class="card-body">
+          <h5 class="card-title">Frequently Asked Questions</h5>
+          <p class="card-text">Answers to common questions on produce storage, transportation, and best practices to reduce spoilage.</p>
+          <a href="{{ url_for('faq') }}" class="btn btn-success">View Calendar</a>
+        </div>
+      </div>
+
+      <!-- Yield Prediction -->
+      <div class="card">
+        <img src="{{ url_for('static', filename='images/yield.jpg') }}" alt="Yield Prediction">
+        <div class="card-body">
+          <h5 class="card-title">Crop Yield Prediction</h5>
+          <p class="card-text">Estimate your crop yield with graphs and insights based on your inputs.</p>
+          <a href="{{ url_for('yield_prediction') }}" class="btn btn-success">Predict</a>
+        </div>
+      </div>
+
+      <!-- Soil Analyzer -->
+      <div class="card">
+        <img src="{{ url_for('static', filename='images/soilhealth.JPG') }}" alt="Soil Health Analyzer">
+        <div class="card-body">
+          <h5 class="card-title">Soil Health Analyzer</h5>
+          <p class="card-text">Analyze soil health from a report or manually entered data, with actionable tips.</p>
+          <a href="{{ url_for('analyzer') }}" class="btn btn-success">View it or try it</a>
+        </div>
+      </div>
+
+      <!-- Government Schemes -->
+      <div class="card">
+        <img src="{{ url_for('static', filename='images/PM-Kisan-SCHEME.jpg') }}" alt="Govt Schemes">
+        <div class="card-body">
+          <h5 class="card-title">Govt Schemes & Subsidies</h5>
+          <p class="card-text">Find schemes you qualify for with easy-to-understand summaries and links.</p>
+          <a href="{{ url_for('schemes') }}" class="btn btn-success">View</a>
+        </div>
+      </div>
+
+      <!-- Crop Calendar -->
+      <div class="card">
+        <img src="{{ url_for('static', filename='images/cropcal.avif') }}" alt="Crop Calendar">
+        <div class="card-body">
+          <h5 class="card-title">Crop Calendar</h5>
+          <p class="card-text">Month-wise crop schedules, personalized by crop and region.</p>
+          <a href="{{ url_for('crop_calendar') }}" class="btn btn-success">View Calendar</a>
+        </div>
+      </div>
+
+    </div> <!-- end of features -->
+
+  </section>
+
+  <footer>
+    <p>&copy; 2025 FarmHub Project | Final Year Engineering | Made with ❤️ for Indians</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,19 +1,34 @@
 <!DOCTYPE html>
-<html>
-<head><title>Crop Prediction</title></head>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crop Prediction</title>
+</head>
 <body>
-  <h1>Crop Prediction</h1>
-  <form action="/predict_crop" method="POST">
-    Nitrogen: <input type="text" name="nitrogen"><br>
-    Phosphorus: <input type="text" name="phosphorus"><br>
-    Potassium: <input type="text" name="potassium"><br>
-    pH: <input type="text" name="ph"><br>
+
+  <h1>🌱 Crop Prediction</h1>
+
+  <form action="{{ url_for('predict_crop') }}" method="POST">
+    <label for="nitrogen">Nitrogen:</label><br>
+    <input type="number" step="0.1" name="nitrogen" id="nitrogen" required><br><br>
+
+    <label for="phosphorus">Phosphorus:</label><br>
+    <input type="number" step="0.1" name="phosphorus" id="phosphorus" required><br><br>
+
+    <label for="potassium">Potassium:</label><br>
+    <input type="number" step="0.1" name="potassium" id="potassium" required><br><br>
+
+    <label for="ph">pH:</label><br>
+    <input type="number" step="0.1" name="ph" id="ph" required><br><br>
+
     <input type="submit" value="Predict">
   </form>
+
   {% if prediction_text %}
-    <h2>{{ prediction_text }}</h2>
+    <p><strong>{{ prediction_text }}</strong></p>
   {% endif %}
-  <a href="/yield">Go to Yield Prediction</a>
+<br>
+<a href="{{ url_for('yield_form') }}">🌾 Go to Yield Prediction</a>
 </body>
 </html>
- 

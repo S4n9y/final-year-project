@@ -1,17 +1,33 @@
 <!DOCTYPE html>
-<html>
-<head><title>Yield Prediction</title></head>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yield Prediction</title>
+</head>
 <body>
-  <h1>Yield Prediction</h1>
-  <form action="/predict_yield" method="POST">
-    Area (hectares): <input type="text" name="area"><br>
-    Rainfall (mm): <input type="text" name="rainfall"><br>
-    Temperature (°C): <input type="text" name="temperature"><br>
+
+  <h1>🌾 Yield Prediction</h1>
+
+  <form action="{{ url_for('predict_yield') }}" method="POST">
+    <label for="area">Area (in hectares):</label><br>
+    <input type="number" step="0.01" name="area" id="area" required><br><br>
+
+    <label for="rainfall">Rainfall (in mm):</label><br>
+    <input type="number" step="0.1" name="rainfall" id="rainfall" required><br><br>
+
+    <label for="temperature">Temperature (in °C):</label><br>
+    <input type="number" step="0.1" name="temperature" id="temperature" required><br><br>
+
     <input type="submit" value="Predict">
   </form>
+
   {% if prediction_text %}
-    <h2>{{ prediction_text }}</h2>
+    <p><strong>{{ prediction_text }}</strong></p>
   {% endif %}
-  <a href="/">Go to Crop Prediction</a>
+
+  <br>
+  <a href="{{ url_for('crop_form') }}">🌱 Go to Crop Prediction</a>
+
 </body>
 </html>

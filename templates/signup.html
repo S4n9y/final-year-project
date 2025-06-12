@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Login - FarmHub</title>
+  <title>Signup - FarmHub</title>
   <style>
     body {
       margin: 0;
@@ -20,7 +20,7 @@
       font-weight: bold;
     }
     .content {
-      max-width: 400px;
+      max-width: 500px;
       margin: 50px auto;
       padding: 20px;
     }
@@ -37,7 +37,7 @@
     label {
       font-weight: bold;
     }
-    input {
+    input, select {
       width: 100%;
       padding: 10px;
       margin: 10px 0 20px;
@@ -60,44 +60,55 @@
   </style>
 </head>
 <body>
-  <nav><a href="homepage.html">← Back to Home</a></nav>
+  <nav><a href="{{ url_for('homepage') }}">Home</a></nav>
   <div class="content">
-    <h2>Login to FarmHub</h2>
-    <form id="loginForm">
+    <h2>Create an Account</h2>
+    <form id="signupForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" placeholder="Enter your name" required />
+
       <label for="email">Email:</label>
-      <input type="email" id="email" name="identifier" placeholder="Enter your email" required />
+      <input type="email" id="email" name="email" placeholder="Enter your email" required />
+
+      <label for="dob">Date of Birth:</label>
+      <input type="date" id="dob" name="DOB" required />
+
+      <label for="gender">Gender:</label>
+      <select id="gender" name="gender" required>
+        <option value="">--Select--</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
 
       <label for="password">Password:</label>
-      <input type="password" id="password" name="password" placeholder="Enter your password" required />
+      <input type="password" id="password" name="password" placeholder="Create a password" required />
 
-      <button type="submit">Login</button>
-      <p style="text-align:center; margin-top:10px;">
-        Don't have an account?
-        <a href="signup.html" style="color:#2e7d32; font-weight:bold; text-decoration:underline;">Sign up</a>
-      </p>
+      <button type="submit">Signup</button>
     </form>
   </div>
 
   <script>
-    document.getElementById("loginForm").addEventListener("submit", async function (e) {
+    document.getElementById("signupForm").addEventListener("submit", async function (e) {
       e.preventDefault();
 
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
+      const form = e.target;
+      const userData = {
+        name: form.name.value,
+        email: form.email.value,
+        DOB: form.DOB.value,
+        gender: form.gender.value,
+        password: form.password.value
+      };
 
-      const res = await fetch("/login", {
+      const res = await fetch("/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ identifier: email, password })
+        body: JSON.stringify(userData)
       });
 
       const data = await res.json();
-
-      if (res.ok && data.redirect) {
-        window.location.href = data.redirect; // 😘 Smooth redirect to homepage.html
-      } else {
-        alert(data.message); // show error if login fails
-      }
+      alert(data.message);
     });
   </script>
 </body>

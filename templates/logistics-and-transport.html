@@ -4,16 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Logistics & Transport</title>
-  <link href="LOGISTIC'S AND TRANSPOART.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/LOGISTICS_AND_TRANSPOART.css') }}">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
   <nav>
     <a href="#" class="logo">FarmHub</a>
     <ul>
-      <li><a href="homepage.html">Home</a></li>
-      <li><a href="#">Dashboard</a></li>
-      <li><a href="contactus.html">Contact-us</a></li>
+      <li><a href="{{ url_for('home') }}">Home</a></li>
+      <li><a href="{{ url_for('weather') }}">Weather</a></li>
+      <li><a href="{{ url_for('contact_us') }}">Contact Us</a></li>
     </ul>
   </nav>
 
@@ -23,8 +23,10 @@
   </header>
 
   <main class="content container mt-4">
-    <img src="Tran.1.jpg" class="feature-image img-fluid" alt="Logistics">
-    
+<img src="{{ url_for('static', filename='images/yield.jpg') }}"
+     class="img-fluid"
+     alt="Smart Logistics"
+     style="width: 100vw; height: auto; max-height: 90vh; object-fit: cover; display: block; margin: 0 auto; border-radius: 8px;">    
     <h2 class="mt-4">Overview</h2>
     <p>
       Logistics and transport are vital for minimizing post-harvest losses and ensuring that agricultural produce reaches markets efficiently and in good condition. Our smart logistics solution integrates GPS tracking, route optimization, and real-time inventory management to empower farmers and supply chain operators.
@@ -89,7 +91,6 @@
             const lng = position.coords.longitude.toFixed(5);
             document.getElementById("location-status").textContent = 
               `Location Shared: Latitude ${lat}, Longitude ${lng}`;
-            // TODO: Send to backend if needed
           },
           () => {
             document.getElementById("location-status").textContent = 
@@ -108,7 +109,6 @@
       const items = document.getElementById('itemsCarried').value;
       document.getElementById('formMsg').textContent = 
         `${name} logged carrying: ${items}`;
-      // TODO: Send to backend if needed
     }
   </script>
 </body>
