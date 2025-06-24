@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head><title>Admin Dashboard</title></head>
+<body>
+  <h1>Welcome, Admin</h1>
+  <h2>👤 Registered Users</h2>
+  <table border="1">
+    <tr><th>ID</th><th>Name</th><th>Email</th><th>DOB</th><th>Gender</th></tr>
+    {% for user in users %}
+      <tr>
+        <td>{{ user.id }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.dob }}</td>
+        <td>{{ user.gender }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+
+  <h2>📩 Contact Messages</h2>
+  <table border="1">
+    <tr><th>ID</th><th>Name</th><th>Email</th><th>Message</th></tr>
+    {% for contact in contacts %}
+      <tr>
+        <td>{{ contact.id }}</td>
+        <td>{{ contact.name }}</td>
+        <td>{{ contact.email }}</td>
+        <td>{{ contact.message }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+
+  <a href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html>
