@@ -15,6 +15,15 @@ c.execute('''
         password TEXT NOT NULL
     )
 ''')
+# Create a 'contacts' table for storing contact form data
+c.execute('''
+    CREATE TABLE IF NOT EXISTS contacts (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL,
+        email TEXT NOT NULL,
+        message TEXT NOT NULL
+    )
+''')
 
 # Save and close the connection
 conn.commit()

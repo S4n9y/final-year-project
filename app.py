@@ -162,7 +162,7 @@ def contact_us():
 @app.route('/farmers-dashboard')
 def farmer_dashboard():
     if 'user_id' in session:
-        return render_template("home.html", name=session['user_name'])
+        return render_template("homepage.html", name=session['user_name'])
     return redirect(url_for('login'))
 
 # ------------------ Page Routes -------------------

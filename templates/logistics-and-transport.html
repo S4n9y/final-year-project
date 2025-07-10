@@ -59,22 +59,41 @@
       </ul>
     </section>
 
-    <!-- Transporter Inventory Form -->
-    <section class="my-5">
-      <h3>Log What You're Carrying</h3>
-      <form onsubmit="submitTransportForm(event)">
-        <div class="mb-3">
-          <label for="driverName" class="form-label">Transporter Name</label>
-          <input type="text" id="driverName" class="form-control" required>
-        </div>
-        <div class="mb-3">
-          <label for="itemsCarried" class="form-label">Items Carried (e.g., Tomatoes - 200kg)</label>
-          <textarea id="itemsCarried" class="form-control" rows="3" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-success">Submit</button>
-      </form>
-      <p id="formMsg" class="mt-2"></p>
-    </section>
+   <!-- Transporter Inventory Form -->
+<section class="my-5">
+  <h3>Log What You're Carrying</h3>
+  <form onsubmit="submitTransportForm(event)">
+    <div class="mb-3">
+      <label for="driverName" class="form-label">Transporter Name</label>
+      <input type="text" id="driverName" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label for="itemsCarried" class="form-label">Items Carried (e.g., Tomatoes - 200kg)</label>
+      <textarea id="itemsCarried" class="form-control" rows="3" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+  <p id="formMsg" class="mt-2"></p>
+
+  <!-- Transport Log Table -->
+  <div class="mt-4">
+    <h4>Transport Logs</h4>
+    <table class="table table-bordered" id="transportLogTable">
+      <thead class="table-dark">
+        <tr>
+          <th>#</th>
+          <th>Transporter Name</th>
+          <th>Items Carried</th>
+          <th>Timestamp</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Logs will be appended here -->
+      </tbody>
+    </table>
+  </div>
+</section>
+
   </main>
 
   <footer class="text-center mt-5">
@@ -83,33 +102,62 @@
 
   <!-- JavaScript for interactivity -->
   <script>
-    function shareLocation() {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            const lat = position.coords.latitude.toFixed(5);
-            const lng = position.coords.longitude.toFixed(5);
-            document.getElementById("location-status").textContent = 
-              `Location Shared: Latitude ${lat}, Longitude ${lng}`;
-          },
-          () => {
-            document.getElementById("location-status").textContent = 
-              "Failed to retrieve location.";
-          }
-        );
-      } else {
-        document.getElementById("location-status").textContent = 
-          "Geolocation not supported.";
-      }
-    }
+  let logCounter = 1;
 
-    function submitTransportForm(e) {
-      e.preventDefault();
-      const name = document.getElementById('driverName').value;
-      const items = document.getElementById('itemsCarried').value;
-      document.getElementById('formMsg').textContent = 
-        `${name} logged carrying: ${items}`;
+  function shareLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const lat = position.coords.latitude.toFixed(5);
+          const lng = position.coords.longitude.toFixed(5);
+          document.getElementById("location-status").textContent = 
+            `Location Shared: Latitude ${lat}, Longitude ${lng}`;
+        },
+        () => {
+          document.getElementById("location-status").textContent = 
+            "Failed to retrieve location.";
+        }
+      );
+    } else {
+      document.getElementById("location-status").textContent = 
+        "Geolocation not supported.";
     }
-  </script>
+  }
+
+  function submitTransportForm(e) {
+    e.preventDefault();
+    const name = document.getElementById('driverName').value.trim();
+    const items = document.getElementById('itemsCarried').value.trim();
+
+    if (!name || !items) return;
+
+    const timestamp = new Date().toLocaleString();
+
+    const table = document.getElementById("transportLogTable").getElementsByTagName('tbody')[0];
+    const newRow = table.insertRow();
+
+    // Insert cells and values
+    newRow.innerHTML = `
+      <td>${logCounter++}</td>
+      <td>${name}</td>
+      <td>${items}</td>
+      <td>${timestamp}</td>
+      <td><button class="btn btn-danger btn-sm" onclick="deleteRow(this)">Delete</button></td>
+    `;
+
+    // Clear form
+    document.getElementById('driverName').value = '';
+    document.getElementById('itemsCarried').value = '';
+    document.getElementById('formMsg').textContent = "Log added successfully!";
+  }
+
+  function deleteRow(button) {
+    const row = button.closest("tr");
+    row.remove();
+  }
+</script>
+
+   
+   
 </body>
 </html>
