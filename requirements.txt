@@ -3,3 +3,5 @@ gunicorn
 numpy
 scikit-learn
 joblib
+flask_cors
+pip freeze > requirements.txt
