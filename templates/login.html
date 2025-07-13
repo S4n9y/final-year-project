@@ -72,33 +72,75 @@
 
       <button type="submit">Login</button>
       <p style="text-align:center; margin-top:10px;">
-        Don't have an account?
-        <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
-      </p>
+      <p style="text-align:center; margin-top:10px;">
+  Don't have an account?
+  <li><a href="{{ url_for('signup') }}">Register</a></li>
+</p>
+<div style="text-align: center; margin-top: 20px;">
+  <button id="logoutBtn" type="button">Logout</button>
+</div>
     </form>
   </div>
-
+  // ... (existing login script)
   <script>
-    document.getElementById("loginForm").addEventListener("submit", async function (e) {
-      e.preventDefault();
+document.getElementById("loginForm").addEventListener("submit", async function (e) {
+  e.preventDefault();
 
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
 
-      const res = await fetch("/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ identifier: email, password })
-      });
+  const response = await fetch("/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ identifier: email, password: password })
+  });
 
-      const data = await res.json();
+  const data = await response.json();
 
-      if (res.ok && data.redirect) {
-        window.location.href = data.redirect; // 😘 Smooth redirect to homepage.html
-      } else {
-        alert(data.message); // show error if login fails
+  if (response.ok) {
+    // ✅ Login successful — redirect to homepage or dashboard
+    window.location.href = data.redirect || "/";
+  } else {
+    alert(data.message || "Login failed. Please try again.");
+  }
+});
+
+// Logout button logic
+document.getElementById("logoutBtn").addEventListener("click", async function () {
+  const res = await fetch("/logout", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    }
+  });
+
+  if (res.ok) {
+    window.location.href = "/"; // Redirect after logout
+  } else {
+    alert("Logout failed. Please try again.");
+  }
+});
+</script>
+
+
+  // Logout button logic
+  document.getElementById("logoutBtn").addEventListener("click", async function () {
+    const res = await fetch("/logout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
       }
     });
-  </script>
+
+    if (res.ok) {
+      window.location.href = "/"; // Redirect to homepage or login page after logout
+    } else {
+      alert("Logout failed. Please try again.");
+    }
+  });
+</script>
+
 </body>
 </html>

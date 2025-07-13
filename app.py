@@ -37,6 +37,17 @@ def init_db():
         )
     ''')
 
+    # ✅ Create inventory table
+    c.execute('''
+        CREATE TABLE IF NOT EXISTS inventory (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            item_name TEXT NOT NULL,
+            quantity INTEGER NOT NULL,
+            unit TEXT,
+            date_added TEXT DEFAULT CURRENT_TIMESTAMP
+        )
+    ''')
+
     conn.commit()
     conn.close()
 
@@ -116,7 +127,6 @@ def logout():
 ADMIN_EMAIL = "sanketdhawade2002@gmail.com"
 ADMIN_PASSWORD = hash_password("Sjd@1234")
 
-# ------------------ Admin Login -------------------
 @app.route('/admin-login', methods=['GET', 'POST'])
 def admin_login():
     if request.method == 'POST':
@@ -164,6 +174,57 @@ def farmer_dashboard():
     if 'user_id' in session:
         return render_template("homepage.html", name=session['user_name'])
     return redirect(url_for('login'))
+
+@app.route('/logout', methods=['POST'])
+def logout_user():
+    session.clear()
+    return jsonify({"message": "Logged out successfully", "redirect": "/"})
+
+# ------------------ Inventory Management -------------------
+@app.route('/add_inventory', methods=['POST'])
+def add_inventory():
+    if 'user_id' not in session:
+        return redirect(url_for('login'))  # 🔐
+
+    item_name = request.form['item_name']
+    quantity = request.form['quantity']
+    unit = request.form['unit']
+    user_id = session['user_id']
+
+    conn = get_db_connection()
+    conn.execute('INSERT INTO inventory (item_name, quantity, unit, user_id) VALUES (?, ?, ?, ?)',
+                 (item_name, quantity, unit, user_id))
+    conn.commit()
+    conn.close()
+    return redirect(url_for('inventory'))
+
+
+@app.route('/inventory')
+def inventory():
+    if 'user_id' not in session:
+        return redirect(url_for('login'))  # 🔐 Redirect to login if not logged in
+
+    user_id = session['user_id']
+
+    conn = get_db_connection()
+    items = conn.execute('SELECT * FROM inventory WHERE user_id = ?', (user_id,)).fetchall()
+    conn.close()
+    return render_template('inventory.html', items=items)
+
+
+@app.route('/delete_inventory/<int:item_id>', methods=['POST'])
+def delete_inventory(item_id):
+    if 'user_id' not in session:
+        return redirect(url_for('login'))  # 🔐
+
+    user_id = session['user_id']
+
+    conn = get_db_connection()
+    # Ensure deletion only by the item's owner
+    conn.execute('DELETE FROM inventory WHERE id = ? AND user_id = ?', (item_id, user_id))
+    conn.commit()
+    conn.close()
+    return redirect(url_for('inventory'))
 
 # ------------------ Page Routes -------------------
 @app.route('/crops')
@@ -242,48 +303,48 @@ def crop_calendar():
 def about_us():
     return render_template('About-us.html')
 
-# ------------------ VALIDATION FUNCTION -------------------
+# ------------------ Validation -------------------
 def check_input_limits(data):
     warnings = []
 
     if data['nitrogen'] < 10:
-        warnings.append("⚠️ Nitrogen is too low. This may lead to stunted growth and yellowing of leaves.")
+        warnings.append("⚠️ Nitrogen is too low.")
     elif data['nitrogen'] > 140:
-        warnings.append("⚠️ Nitrogen is too high. It can cause excessive leaf growth and poor flowering/fruiting.")
+        warnings.append("⚠️ Nitrogen is too high.")
 
     if data['phosphorus'] < 5:
-        warnings.append("⚠️ Phosphorus is too low. Root development and flowering may be severely affected.")
+        warnings.append("⚠️ Phosphorus is too low.")
     elif data['phosphorus'] > 145:
-        warnings.append("⚠️ Phosphorus is too high. Can cause nutrient imbalance and zinc deficiency.")
+        warnings.append("⚠️ Phosphorus is too high.")
 
     if data['potassium'] < 5:
-        warnings.append("⚠️ Potassium is too low. Increases risk of diseases and weak stem development.")
+        warnings.append("⚠️ Potassium is too low.")
     elif data['potassium'] > 205:
-        warnings.append("⚠️ Potassium is too high. May inhibit uptake of magnesium and calcium.")
+        warnings.append("⚠️ Potassium is too high.")
 
     if data['temperature'] < 8:
-        warnings.append("⚠️ Temperature is too low. Crops may experience frost damage or delayed growth.")
+        warnings.append("⚠️ Temperature is too low.")
     elif data['temperature'] > 43:
-        warnings.append("⚠️ Temperature is too high. May cause heat stress, wilting, and flower drop.")
+        warnings.append("⚠️ Temperature is too high.")
 
     if data['humidity'] < 14:
-        warnings.append("⚠️ Humidity is too low. Risk of drought stress and reduced transpiration.")
+        warnings.append("⚠️ Humidity is too low.")
     elif data['humidity'] > 100:
-        warnings.append("⚠️ Humidity is too high. Increases risk of fungal diseases and mold.")
+        warnings.append("⚠️ Humidity is too high.")
 
     if data['ph'] < 3.5:
-        warnings.append("⚠️ Soil is too acidic. Nutrient absorption will be limited, harming crop health.")
+        warnings.append("⚠️ Soil is too acidic.")
     elif data['ph'] > 9.5:
-        warnings.append("⚠️ Soil is too alkaline. Essential nutrients like iron and phosphorus become unavailable.")
+        warnings.append("⚠️ Soil is too alkaline.")
 
     if data['rainfall'] < 20:
-        warnings.append("⚠️ Rainfall is too low. Soil dryness may lead to seed failure and low yield.")
+        warnings.append("⚠️ Rainfall is too low.")
     elif data['rainfall'] > 300:
-        warnings.append("⚠️ Rainfall is too high. Waterlogging can damage roots and cause crop rot.")
+        warnings.append("⚠️ Rainfall is too high.")
 
     return warnings
 
-# ------------------ ML PREDICTION ROUTES -------------------
+# ------------------ ML PREDICTIONS -------------------
 @app.route('/predict_crop', methods=['POST'])
 def predict_crop():
     try:
@@ -310,17 +371,9 @@ def predict_crop():
         ]])
 
         prediction = crop_model.predict(features)[0]
+        crop_name = label_encoder.inverse_transform([prediction])[0]
 
-        try:
-            crop_name = label_encoder.inverse_transform([prediction])[0]
-        except Exception:
-            crop_name = str(prediction)
-
-        return render_template(
-            'crop-recommendation.html',
-            prediction_text=f"🌱 Recommended Crop: {crop_name}",
-            warnings=warnings
-        )
+        return render_template('crop-recommendation.html', prediction_text=f"🌱 Recommended Crop: {crop_name}", warnings=warnings)
 
     except Exception as e:
         return render_template('crop-recommendation.html', prediction_text=f"❌ Error: {str(e)}")
@@ -340,6 +393,6 @@ def predict_yield():
     except Exception as e:
         return render_template('yield.html', prediction_text=f"❌ Error: {str(e)}")
 
-# ------------------ Start the Server -------------------
+# ------------------ Start Server -------------------
 if __name__ == '__main__':
     app.run(debug=True)
