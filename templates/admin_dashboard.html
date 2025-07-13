@@ -73,21 +73,20 @@
 </head>
 <body>
   <div class="dashboard">
-    <h1>👨‍💼 Admin Dashboard</h1>
+   <h2>👤 Registered Users</h2>
+<table>
+  <tr><th>Customer ID</th><th>Name</th><th>Email</th><th>DOB</th><th>Gender</th></tr>
+  {% for user in users %}
+    <tr>
+      <td>{{ user.id }}</td>  <!-- This is already unique -->
+      <td>{{ user.name }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.dob }}</td>
+      <td>{{ user.gender }}</td>
+    </tr>
+  {% endfor %}
+</table>
 
-    <h2>👤 Registered Users</h2>
-    <table>
-      <tr><th>ID</th><th>Name</th><th>Email</th><th>DOB</th><th>Gender</th></tr>
-      {% for user in users %}
-        <tr>
-          <td>{{ user.id }}</td>
-          <td>{{ user.name }}</td>
-          <td>{{ user.email }}</td>
-          <td>{{ user.dob }}</td>
-          <td>{{ user.gender }}</td>
-        </tr>
-      {% endfor %}
-    </table>
 
     <h2>📩 Contact Messages</h2>
     <table>

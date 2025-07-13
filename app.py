@@ -44,7 +44,9 @@ def init_db():
             item_name TEXT NOT NULL,
             quantity INTEGER NOT NULL,
             unit TEXT,
-            date_added TEXT DEFAULT CURRENT_TIMESTAMP
+            date_added TEXT DEFAULT CURRENT_TIMESTAMP,
+            user_id INTEGER,
+            FOREIGN KEY (user_id) REFERENCES users(id)
         )
     ''')
 
@@ -184,31 +186,33 @@ def logout_user():
 @app.route('/add_inventory', methods=['POST'])
 def add_inventory():
     if 'user_id' not in session:
-        return redirect(url_for('login'))  # 🔐
+        return redirect(url_for('login'))
 
     item_name = request.form['item_name']
     quantity = request.form['quantity']
     unit = request.form['unit']
-    user_id = session['user_id']
+    user_id = session['user_id']  # 👈 VERY IMPORTANT
 
     conn = get_db_connection()
     conn.execute('INSERT INTO inventory (item_name, quantity, unit, user_id) VALUES (?, ?, ?, ?)',
                  (item_name, quantity, unit, user_id))
     conn.commit()
     conn.close()
+
     return redirect(url_for('inventory'))
 
 
 @app.route('/inventory')
 def inventory():
     if 'user_id' not in session:
-        return redirect(url_for('login'))  # 🔐 Redirect to login if not logged in
+        return redirect(url_for('login'))
 
     user_id = session['user_id']
 
     conn = get_db_connection()
     items = conn.execute('SELECT * FROM inventory WHERE user_id = ?', (user_id,)).fetchall()
     conn.close()
+
     return render_template('inventory.html', items=items)
 
 
@@ -343,6 +347,8 @@ def check_input_limits(data):
         warnings.append("⚠️ Rainfall is too high.")
 
     return warnings
+
+
 
 # ------------------ ML PREDICTIONS -------------------
 @app.route('/predict_crop', methods=['POST'])

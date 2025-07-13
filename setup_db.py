@@ -26,19 +26,29 @@ c.execute('''
     )
 ''')
 
-# 🚨 Drop existing inventory table if it exists (DELETES ALL INVENTORY DATA)
-c.execute('DROP TABLE IF EXISTS inventory')
-
-# ✅ Recreate inventory table with user_id for account-specific inventory
+# Add this in your init_db() function
 c.execute('''
-    CREATE TABLE inventory (
+    CREATE TABLE IF NOT EXISTS transport_logs (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        driver_name TEXT NOT NULL,
+        items TEXT NOT NULL,
+        timestamp TEXT DEFAULT CURRENT_TIMESTAMP,
+        user_id INTEGER,
+        FOREIGN KEY (user_id) REFERENCES users(id)
+    )
+''')
+
+
+# ✅ Create 'inventory' table with user_id for user-specific inventory
+c.execute('''
+    CREATE TABLE IF NOT EXISTS inventory (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         item_name TEXT NOT NULL,
         quantity INTEGER NOT NULL,
         unit TEXT,
         date_added TEXT DEFAULT CURRENT_TIMESTAMP,
-        user_id INTEGER NOT NULL,
-        FOREIGN KEY(user_id) REFERENCES users(id)
+        user_id INTEGER,
+        FOREIGN KEY (user_id) REFERENCES users(id)
     )
 ''')
 
@@ -46,4 +56,4 @@ c.execute('''
 conn.commit()
 conn.close()
 
-print("✅ Database initialized. Inventory table reset successfully!")
+print("✅ Database initialized. Tables are ready.")
