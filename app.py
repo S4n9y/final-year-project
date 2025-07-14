@@ -1,3 +1,4 @@
+app = Flask(__name__, static_folder='static', template_folder='templates')
 from flask import Flask, render_template, request, jsonify, redirect, url_for, session
 from flask_cors import CORS
 import numpy as np

@@ -4,3 +4,5 @@ numpy
 scikit-learn
 joblib
 flask_cors
+ipython==8.10.0
+
